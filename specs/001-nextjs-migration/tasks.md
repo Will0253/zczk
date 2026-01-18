@@ -132,14 +132,14 @@
 
 ### 产品页面组件
 
-- [ ] T053 [P] [US2] 迁移 Products 组件 from src/app/components/Products.tsx to components/sections/Products.tsx (添加 'use client' 如有动画)
-- [ ] T054 [P] [US2] 迁移 ProductDetail 组件 from src/app/components/ProductDetail.tsx to components/sections/ProductDetail.tsx (添加 'use client' 如有动画)
+- [X] T053 [P] [US2] 迁移 Products 组件 from src/app/components/Products.tsx to components/sections/Products.tsx (添加 'use client' 如有动画)
+- [X] T054 [P] [US2] 迁移 ProductDetail 组件 from src/app/components/ProductDetail.tsx to components/sections/ProductDetail.tsx (添加 'use client' 如有动画)
 
 ### 产品页面路由
 
-- [ ] T055 [US2] 创建产品列表页 in app/products/page.tsx (SSG + ISR, 配置 revalidate)
-- [ ] T056 [US2] 创建产品详情页 in app/products/[slug]/page.tsx (generateStaticParams, generateMetadata)
-- [ ] T057 [US2] 验证产品页面导航 (列表 → 详情 → 返回, 浏览历史保持)
+- [X] T055 [US2] 创建产品列表页 in app/products/page.tsx (SSG + ISR, 配置 revalidate)
+- [X] T056 [US2] 创建产品详情页 in app/products/[slug]/page.tsx (generateStaticParams, generateMetadata)
+- [X] T057 [US2] 验证产品页面导航 (列表 → 详情 → 返回, 浏览历史保持)
 
 **Checkpoint**: User Story 2 完成 - 产品功能可独立测试
 
@@ -153,14 +153,14 @@
 
 ### 解决方案页面组件
 
-- [ ] T058 [P] [US3] 迁移 Solutions 组件 from src/app/components/Solutions.tsx to components/sections/Solutions.tsx (添加 'use client' 如有动画)
-- [ ] T059 [P] [US3] 迁移 HighwaySolutionDetail 组件 from src/app/components/HighwaySolutionDetail.tsx to components/sections/HighwaySolutionDetail.tsx (添加 'use client' 如有动画)
+- [X] T058 [P] [US3] 迁移 Solutions 组件 from src/app/components/Solutions.tsx to components/sections/Solutions.tsx (添加 'use client' 如有动画)
+- [X] T059 [P] [US3] 迁移 HighwaySolutionDetail 组件 from src/app/components/HighwaySolutionDetail.tsx to components/sections/HighwaySolutionDetail.tsx (添加 'use client' 如有动画)
 
 ### 解决方案页面路由
 
-- [ ] T060 [US3] 创建解决方案列表页 in app/solutions/page.tsx (SSG, 配置元数据)
-- [ ] T061 [US3] 创建解决方案详情页 in app/solutions/[slug]/page.tsx (generateStaticParams, generateMetadata)
-- [ ] T062 [US3] 验证解决方案页面导航和内容展示
+- [X] T060 [US3] 创建解决方案列表页 in app/solutions/page.tsx (SSG, 配置元数据)
+- [X] T061 [US3] 创建解决方案详情页 in app/solutions/[slug]/page.tsx (generateStaticParams, generateMetadata)
+- [X] T062 [US3] 验证解决方案页面导航和内容展示
 
 **Checkpoint**: User Story 3 完成 - 解决方案功能可独立测试
 
@@ -174,14 +174,14 @@
 
 ### 资讯页面组件
 
-- [ ] T063 [P] [US4] 迁移 News 组件 from src/app/components/News.tsx to components/sections/News.tsx (添加 'use client' 如有动画)
-- [ ] T064 [P] [US4] 迁移 NewsDetailPage 内容 from src/app/NewsDetailPage.tsx to components/sections/NewsDetail.tsx (添加 'use client')
+- [X] T063 [P] [US4] 迁移 News 组件 from src/app/components/News.tsx to components/sections/News.tsx (添加 'use client' 如有动画)
+- [X] T064 [P] [US4] 迁移 NewsDetailPage 内容 from src/app/NewsDetailPage.tsx to components/sections/NewsDetail.tsx (添加 'use client')
 
 ### 资讯页面路由
 
-- [ ] T065 [US4] 创建资讯列表页 in app/news/page.tsx (SSG + ISR, 配置 revalidate)
-- [ ] T066 [US4] 创建新闻详情页 in app/news/[slug]/page.tsx (generateStaticParams, generateMetadata)
-- [ ] T067 [US4] 验证资讯页面导航、分类筛选和侧边栏功能
+- [X] T065 [US4] 创建资讯列表页 in app/news/page.tsx (SSG + ISR, 配置 revalidate)
+- [X] T066 [US4] 创建新闻详情页 in app/news/[slug]/page.tsx (generateStaticParams, generateMetadata)
+- [X] T067 [US4] 验证资讯页面导航、分类筛选和侧边栏功能
 
 **Checkpoint**: User Story 4 完成 - 资讯功能可独立测试
 
@@ -195,10 +195,10 @@
 
 ### 响应式验证和优化
 
-- [ ] T068 [US5] 验证 Navigation 移动端汉堡菜单展开/收起动画 in components/layout/Navigation.tsx
-- [ ] T069 [US5] 验证所有页面响应式断点 (手机 < 768px, 平板 768-1024px, 桌面 > 1024px)
-- [ ] T070 [US5] 验证触摸交互点击区域 (最小 44x44px)
-- [ ] T071 [US5] 优化移动端图片加载 (响应式 srcSet)
+- [X] T068 [US5] 验证 Navigation 移动端汉堡菜单展开/收起动画 in components/layout/Navigation.tsx
+- [X] T069 [US5] 验证所有页面响应式断点 (手机 < 768px, 平板 768-1024px, 桌面 > 1024px)
+- [X] T070 [US5] 验证触摸交互点击区域 (最小 44x44px)
+- [X] T071 [US5] 优化移动端图片加载 (响应式 srcSet)
 
 **Checkpoint**: User Story 5 完成 - 响应式设计可独立测试
 
@@ -212,14 +212,14 @@
 
 ### 静态页面组件
 
-- [ ] T072 [P] [US6] 迁移 About 组件 from src/app/components/About.tsx to components/sections/About.tsx (添加 'use client' 如有动画)
-- [ ] T073 [P] [US6] 迁移 Contact 组件 from src/app/components/Contact.tsx to components/sections/Contact.tsx (表单部分添加 'use client')
+- [X] T072 [P] [US6] 迁移 About 组件 from src/app/components/About.tsx to components/sections/About.tsx (添加 'use client' 如有动画)
+- [X] T073 [P] [US6] 迁移 Contact 组件 from src/app/components/Contact.tsx to components/sections/Contact.tsx (表单部分添加 'use client')
 
 ### 静态页面路由
 
-- [ ] T074 [US6] 创建关于我们页 in app/about/page.tsx (SSG, 配置元数据)
-- [ ] T075 [US6] 创建联系我们页 in app/contact/page.tsx (SSG, 配置元数据)
-- [ ] T076 [US6] 验证静态页面内容和联系表单功能
+- [X] T074 [US6] 创建关于我们页 in app/about/page.tsx (SSG, 配置元数据)
+- [X] T075 [US6] 创建联系我们页 in app/contact/page.tsx (SSG, 配置元数据)
+- [X] T076 [US6] 验证静态页面内容和联系表单功能
 
 **Checkpoint**: User Story 6 完成 - 所有页面可独立测试
 
@@ -231,23 +231,23 @@
 
 ### 性能优化
 
-- [ ] T077 [P] 配置 next/image 图片优化 (WebP/AVIF 格式)
-- [ ] T078 [P] 验证并优化 Lighthouse 评分 (Performance > 90)
-- [ ] T079 [P] 验证 Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)
+- [X] T077 [P] 配置 next/image 图片优化 (WebP/AVIF 格式)
+- [X] T078 [P] 验证并优化 Lighthouse 评分 (Performance > 90)
+- [X] T079 [P] 验证 Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1)
 
 ### SEO 优化
 
-- [ ] T080 [P] 创建 sitemap.xml 生成配置 in app/sitemap.ts
-- [ ] T081 [P] 创建 robots.txt in public/robots.txt
-- [ ] T082 [P] 验证所有页面 SEO 元数据完整性
+- [X] T080 [P] 创建 sitemap.xml 生成配置 in app/sitemap.ts
+- [X] T081 [P] 创建 robots.txt in app/robots.ts
+- [X] T082 [P] 验证所有页面 SEO 元数据完整性
 
 ### 最终验证
 
-- [ ] T083 删除旧的 src/app/ 目录 (确认迁移完成后)
-- [ ] T084 更新 package.json scripts (dev, build, start)
-- [ ] T085 运行 quickstart.md 验证清单
-- [ ] T086 执行跨浏览器兼容性测试 (Chrome, Firefox, Safari, Edge)
-- [ ] T087 执行无障碍性验证 (WCAG 2.1 AA)
+- [X] T083 删除旧的 src/app/ 目录 (确认迁移完成后)
+- [X] T084 更新 package.json scripts (dev, build, start)
+- [X] T085 运行 quickstart.md 验证清单
+- [X] T086 执行跨浏览器兼容性测试 (Chrome, Firefox, Safari, Edge)
+- [X] T087 执行无障碍性验证 (WCAG 2.1 AA)
 
 ---
 

@@ -16,7 +16,6 @@ export type {
 export type {
   NewsArticle,
   NewsCategory,
-  Author,
 } from './news'
 
 export type {
