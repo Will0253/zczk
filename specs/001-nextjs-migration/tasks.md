@@ -19,13 +19,13 @@
 
 **Purpose**: 创建 Next.js 项目并配置基础结构
 
-- [ ] T001 初始化 Next.js 15+ 项目 `pnpm create next-app@latest`
-- [ ] T002 安装核心依赖 (motion, radix-ui, mui, tailwindcss, lucide-react) in package.json
-- [ ] T003 [P] 配置 TypeScript 路径别名 in tsconfig.json
-- [ ] T004 [P] 配置 Tailwind CSS 4.x in tailwind.config.ts
-- [ ] T005 [P] 配置 PostCSS in postcss.config.mjs
-- [ ] T006 [P] 配置 Next.js 图片域名白名单 in next.config.ts
-- [ ] T007 创建目录结构 (app/, components/, content/, lib/, styles/, types/, public/)
+- [X] T001 初始化 Next.js 15+ 项目 `pnpm create next-app@latest`
+- [X] T002 安装核心依赖 (motion, radix-ui, mui, tailwindcss, lucide-react) in package.json
+- [X] T003 [P] 配置 TypeScript 路径别名 in tsconfig.json
+- [X] T004 [P] 配置 Tailwind CSS 4.x in tailwind.config.ts
+- [X] T005 [P] 配置 PostCSS in postcss.config.mjs
+- [X] T006 [P] 配置 Next.js 图片域名白名单 in next.config.ts
+- [X] T007 创建目录结构 (app/, components/, content/, lib/, styles/, types/, public/)
 
 ---
 
@@ -37,40 +37,40 @@
 
 ### 2.1 样式系统
 
-- [ ] T008 迁移全局样式 from src/styles/theme.css to app/globals.css
-- [ ] T009 [P] 迁移字体配置 from src/styles/fonts.css to styles/fonts.css
-- [ ] T010 [P] 配置品牌色彩变量 (#11345b, #fdbd00) in app/globals.css
+- [X] T008 迁移全局样式 from src/styles/theme.css to app/globals.css
+- [X] T009 [P] 迁移字体配置 from src/styles/fonts.css to styles/fonts.css
+- [X] T010 [P] 配置品牌色彩变量 (#11345b, #fdbd00) in app/globals.css
 
 ### 2.2 类型定义
 
-- [ ] T011 [P] 创建 Product 类型定义 in types/product.ts
-- [ ] T012 [P] 创建 Solution 类型定义 in types/solution.ts
-- [ ] T013 [P] 创建 NewsArticle 类型定义 in types/news.ts
-- [ ] T014 [P] 创建 Navigation 类型定义 in types/navigation.ts
-- [ ] T015 创建类型导出索引 in types/index.ts
+- [X] T011 [P] 创建 Product 类型定义 in types/product.ts
+- [X] T012 [P] 创建 Solution 类型定义 in types/solution.ts
+- [X] T013 [P] 创建 NewsArticle 类型定义 in types/news.ts
+- [X] T014 [P] 创建 Navigation 类型定义 in types/navigation.ts
+- [X] T015 创建类型导出索引 in types/index.ts
 
 ### 2.3 工具函数
 
-- [ ] T016 [P] 迁移 cn 工具函数 from src/app/components/ui/utils.ts to lib/cn.ts
-- [ ] T017 [P] 创建元数据工具函数 in lib/metadata.ts
+- [X] T016 [P] 迁移 cn 工具函数 from src/app/components/ui/utils.ts to lib/cn.ts
+- [X] T017 [P] 创建元数据工具函数 in lib/metadata.ts
 
 ### 2.4 内容数据层
 
-- [ ] T018 [P] 创建产品数据和获取函数 in content/products.ts
-- [ ] T019 [P] 创建解决方案数据和获取函数 in content/solutions.ts
-- [ ] T020 [P] 创建新闻资讯数据和获取函数 in content/news.ts
-- [ ] T021 [P] 创建导航配置数据 in content/navigation.ts
-- [ ] T022 [P] 创建网站全局配置 in content/site-config.ts
-- [ ] T023 创建内容导出索引 in content/index.ts
+- [X] T018 [P] 创建产品数据和获取函数 in content/products.ts
+- [X] T019 [P] 创建解决方案数据和获取函数 in content/solutions.ts
+- [X] T020 [P] 创建新闻资讯数据和获取函数 in content/news.ts
+- [X] T021 [P] 创建导航配置数据 in content/navigation.ts
+- [X] T022 [P] 创建网站全局配置 in content/site-config.ts
+- [X] T023 创建内容导出索引 in content/index.ts
 
 ### 2.5 UI 基础组件
 
-- [ ] T024 [P] 迁移 accordion.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
-- [ ] T025 [P] 迁移 button.tsx from src/app/components/ui/ to components/ui/
+- [X] T024 [P] 迁移 accordion.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
+- [X] T025 [P] 迁移 button.tsx from src/app/components/ui/ to components/ui/
 - [ ] T026 [P] 迁移 dialog.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
 - [ ] T027 [P] 迁移 dropdown-menu.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
 - [ ] T028 [P] 迁移 tabs.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
-- [ ] T029 [P] 迁移 card.tsx from src/app/components/ui/ to components/ui/
+- [X] T029 [P] 迁移 card.tsx from src/app/components/ui/ to components/ui/
 - [ ] T030 [P] 迁移 badge.tsx from src/app/components/ui/ to components/ui/
 - [ ] T031 [P] 迁移 separator.tsx from src/app/components/ui/ to components/ui/
 - [ ] T032 [P] 迁移 scroll-area.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
@@ -78,21 +78,21 @@
 
 ### 2.6 布局组件
 
-- [ ] T034 迁移 Navigation 组件 from src/app/components/Navigation.tsx to components/layout/Navigation.tsx (添加 'use client', Link → next/link)
-- [ ] T035 [P] 迁移 Footer 组件 from src/app/components/Footer.tsx to components/layout/Footer.tsx (Link → next/link)
-- [ ] T036 [P] 创建 ScrollProgress 组件 (从 App.tsx 提取滚动进度条) in components/layout/ScrollProgress.tsx (添加 'use client')
-- [ ] T037 [P] 迁移 ImageWithFallback 组件 from src/app/components/figma/ to components/figma/ImageWithFallback.tsx
+- [X] T034 迁移 Navigation 组件 from src/app/components/Navigation.tsx to components/layout/Navigation.tsx (添加 'use client', Link → next/link)
+- [X] T035 [P] 迁移 Footer 组件 from src/app/components/Footer.tsx to components/layout/Footer.tsx (Link → next/link)
+- [X] T036 [P] 创建 ScrollProgress 组件 (从 App.tsx 提取滚动进度条) in components/layout/ScrollProgress.tsx (添加 'use client')
+- [X] T037 [P] 迁移 ImageWithFallback 组件 from src/app/components/figma/ to components/figma/ImageWithFallback.tsx
 
 ### 2.7 Provider 组件
 
-- [ ] T038 创建 Providers 包装组件 in components/providers/Providers.tsx (添加 'use client')
+- [X] T038 创建 Providers 包装组件 in components/providers/Providers.tsx (添加 'use client')
 
 ### 2.8 App Router 基础文件
 
-- [ ] T039 创建 Root Layout in app/layout.tsx (整合 Navigation, Footer, ScrollProgress, Providers)
-- [ ] T040 [P] 创建全局加载状态 in app/loading.tsx
-- [ ] T041 [P] 创建 404 页面 in app/not-found.tsx
-- [ ] T042 [P] 创建错误边界 in app/error.tsx (添加 'use client')
+- [X] T039 创建 Root Layout in app/layout.tsx (整合 Navigation, Footer, ScrollProgress, Providers)
+- [X] T040 [P] 创建全局加载状态 in app/loading.tsx
+- [X] T041 [P] 创建 404 页面 in app/not-found.tsx
+- [X] T042 [P] 创建错误边界 in app/error.tsx (添加 'use client')
 
 **Checkpoint**: 基础设施就绪 - 用户故事实施可开始
 
@@ -106,19 +106,19 @@
 
 ### 首页区块组件迁移
 
-- [ ] T043 [P] [US1] 迁移 Hero 组件 from src/app/components/Hero.tsx to components/sections/Hero.tsx (添加 'use client')
-- [ ] T044 [P] [US1] 迁移 BusinessScenarios 组件 from src/app/components/BusinessScenarios.tsx to components/sections/BusinessScenarios.tsx (添加 'use client')
-- [ ] T045 [P] [US1] 迁移 ProductMatrix 组件 from src/app/components/ProductMatrix.tsx to components/sections/ProductMatrix.tsx (添加 'use client')
-- [ ] T046 [P] [US1] 迁移 TechnicalStrength 组件 from src/app/components/TechnicalStrength.tsx to components/sections/TechnicalStrength.tsx (添加 'use client')
-- [ ] T047 [P] [US1] 迁移 CaseStudies 组件 from src/app/components/CaseStudies.tsx to components/sections/CaseStudies.tsx (添加 'use client')
-- [ ] T048 [P] [US1] 迁移 Services 组件 from src/app/components/Services.tsx to components/sections/Services.tsx (添加 'use client')
-- [ ] T049 [P] [US1] 迁移 NewsFeed 组件 from src/app/components/NewsFeed.tsx to components/sections/NewsFeed.tsx (添加 'use client')
+- [X] T043 [P] [US1] 迁移 Hero 组件 from src/app/components/Hero.tsx to components/sections/Hero.tsx (添加 'use client')
+- [X] T044 [P] [US1] 迁移 BusinessScenarios 组件 from src/app/components/BusinessScenarios.tsx to components/sections/BusinessScenarios.tsx (添加 'use client')
+- [X] T045 [P] [US1] 迁移 ProductMatrix 组件 from src/app/components/ProductMatrix.tsx to components/sections/ProductMatrix.tsx (添加 'use client')
+- [X] T046 [P] [US1] 迁移 TechnicalStrength 组件 from src/app/components/TechnicalStrength.tsx to components/sections/TechnicalStrength.tsx (添加 'use client')
+- [X] T047 [P] [US1] 迁移 CaseStudies 组件 from src/app/components/CaseStudies.tsx to components/sections/CaseStudies.tsx (添加 'use client')
+- [X] T048 [P] [US1] 迁移 Services 组件 from src/app/components/Services.tsx to components/sections/Services.tsx (添加 'use client')
+- [X] T049 [P] [US1] 迁移 NewsFeed 组件 from src/app/components/NewsFeed.tsx to components/sections/NewsFeed.tsx (添加 'use client')
 
 ### 首页整合
 
-- [ ] T050 [US1] 创建首页 in app/page.tsx (整合所有区块组件, 配置 SSG 元数据)
-- [ ] T051 [US1] 验证首页动画效果 (滚动触发淡入、缩放动画)
-- [ ] T052 [US1] 验证首页 SEO 元数据 (title, description, og tags)
+- [X] T050 [US1] 创建首页 in app/page.tsx (整合所有区块组件, 配置 SSG 元数据)
+- [X] T051 [US1] 验证首页动画效果 (滚动触发淡入、缩放动画)
+- [X] T052 [US1] 验证首页 SEO 元数据 (title, description, og tags)
 
 **Checkpoint**: User Story 1 完成 - 首页可独立访问和测试
 

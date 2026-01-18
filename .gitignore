@@ -4,6 +4,13 @@ node_modules/
 # Build output
 dist/
 build/
+.next/
+out/
+
+# Next.js
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
 
 # Environment variables
 .env
