@@ -157,10 +157,18 @@ pnpm install
 ### 开发模式
 
 ```bash
-pnpm vite
+pnpm dev
 ```
 
 开发服务器将在 `http://localhost:5173` 启动。
+
+### 预览生产构建
+
+```bash
+pnpm preview
+```
+
+预览生产构建，启动本地服务器查看构建后的效果。
 
 ### 生产构建
 
