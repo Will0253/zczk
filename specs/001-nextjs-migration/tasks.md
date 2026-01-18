@@ -67,14 +67,14 @@
 
 - [X] T024 [P] 迁移 accordion.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
 - [X] T025 [P] 迁移 button.tsx from src/app/components/ui/ to components/ui/
-- [ ] T026 [P] 迁移 dialog.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
-- [ ] T027 [P] 迁移 dropdown-menu.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
-- [ ] T028 [P] 迁移 tabs.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
+- [X] T026 [P] 迁移 dialog.tsx from src/app/components/ui/ to components/ui/ (添加 'use client') [SKIPPED - 未使用]
+- [X] T027 [P] 迁移 dropdown-menu.tsx from src/app/components/ui/ to components/ui/ (添加 'use client') [SKIPPED - 未使用]
+- [X] T028 [P] 迁移 tabs.tsx from src/app/components/ui/ to components/ui/ (添加 'use client') [SKIPPED - 未使用]
 - [X] T029 [P] 迁移 card.tsx from src/app/components/ui/ to components/ui/
-- [ ] T030 [P] 迁移 badge.tsx from src/app/components/ui/ to components/ui/
-- [ ] T031 [P] 迁移 separator.tsx from src/app/components/ui/ to components/ui/
-- [ ] T032 [P] 迁移 scroll-area.tsx from src/app/components/ui/ to components/ui/ (添加 'use client')
-- [ ] T033 [P] 迁移其他 Radix UI 组件 from src/app/components/ui/ to components/ui/
+- [X] T030 [P] 迁移 badge.tsx from src/app/components/ui/ to components/ui/ [SKIPPED - 未使用]
+- [X] T031 [P] 迁移 separator.tsx from src/app/components/ui/ to components/ui/ [SKIPPED - 未使用]
+- [X] T032 [P] 迁移 scroll-area.tsx from src/app/components/ui/ to components/ui/ (添加 'use client') [SKIPPED - 未使用]
+- [X] T033 [P] 迁移其他 Radix UI 组件 from src/app/components/ui/ to components/ui/ [SKIPPED - 未使用]
 
 ### 2.6 布局组件
 
