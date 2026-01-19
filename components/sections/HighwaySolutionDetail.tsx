@@ -34,7 +34,9 @@ import {
   Clock,
   Monitor,
   Cloud,
-  ChevronDown
+  ChevronDown,
+  Wifi,
+  Radar
 } from 'lucide-react'
 import Link from 'next/link'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
@@ -511,6 +513,189 @@ export function HighwaySolutionDetail() {
                   className="absolute left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full blur-[2px]"
                 />
               </div>
+            </div>
+
+            {/* Middle: Three Column Layout - Identify, Platform, Execute */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-24 relative">
+              {/* Left Card - 识别问题 */}
+              <div className="relative">
+                {/* Horizontal connecting line to center */}
+                <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 -right-3 w-6 h-px bg-gradient-to-r from-blue-200 to-transparent z-10">
+                  <motion.div
+                    className="absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-blue-500 rounded-full blur-[2px]"
+                    initial={{ left: '0%' }}
+                    whileInView={{ left: '100%' }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      duration: 1.5, 
+                      delay: 0.5,
+                      repeat: Infinity,
+                      repeatType: 'loop',
+                      ease: 'linear'
+                    }}
+                  />
+                </div>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-white rounded-[32px] p-8 shadow-xl border border-gray-100 relative h-full">
+
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
+                    <Search className="w-6 h-6 text-blue-500" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-black text-gray-900">识别问题</h4>
+                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">IDENTIFY LEVEL</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-8">
+                  {[
+                    { icon: Video, name: '监控摄像头', status: 'ACTIVE' },
+                    { icon: Radar, name: '雷达系统', status: 'ACTIVE' },
+                    { icon: CloudRain, name: '风雨传感器', status: 'ACTIVE' }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                          <item.icon className="w-4 h-4 text-blue-600" />
+                        </div>
+                        <span className="text-sm font-bold text-gray-700">{item.name}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-black text-green-500">{item.status}</span>
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-6 border-t border-gray-100">
+                  <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-3">外部触发器</p>
+                  <div className="flex gap-2">
+                    <span className="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs font-bold rounded-lg border border-gray-200">事件检测</span>
+                    <span className="px-3 py-1.5 bg-red-50 text-red-600 text-xs font-bold rounded-lg border border-red-100">危险车辆</span>
+                  </div>
+                </div>
+                </motion.div>
+              </div>
+
+              {/* Center Card - 预警平台 */}
+              <div className="relative">
+                {/* Horizontal connecting line to right */}
+                <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 -right-3 w-6 h-px bg-gradient-to-r from-blue-200 to-transparent z-10">
+                  <motion.div
+                    className="absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-blue-500 rounded-full blur-[2px]"
+                    initial={{ left: '0%' }}
+                    whileInView={{ left: '100%' }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      duration: 1.5, 
+                      delay: 0.7,
+                      repeat: Infinity,
+                      repeatType: 'loop',
+                      ease: 'linear'
+                    }}
+                  />
+                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-[#11345b] rounded-[32px] p-8 shadow-2xl relative overflow-hidden h-full">
+
+                {/* Background decoration */}
+                <div className="absolute inset-0 opacity-10 pointer-events-none">
+                  <div className="absolute inset-0" style={{ 
+                    backgroundImage: 'radial-gradient(circle at 2px 2px, #fff 1px, transparent 0)', 
+                    backgroundSize: '24px 24px' 
+                  }} />
+                </div>
+
+                <div className="relative z-10">
+                  <div className="flex justify-center mb-6">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full">
+                      <Wifi className="w-4 h-4 text-green-400" />
+                      <span className="text-xs font-black text-green-400 tracking-widest uppercase">NEW GEN 4G LINK</span>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center mb-8">
+                    <div className="relative">
+                      <div className="w-32 h-32 rounded-full border-2 border-dashed border-white/20 flex items-center justify-center">
+                        <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center">
+                          <Cloud className="w-12 h-12 text-white" />
+                        </div>
+                      </div>
+                      <div className="absolute -top-1 -right-1 w-8 h-8 bg-[#fdbd00] rounded-full flex items-center justify-center">
+                        <RefreshCw className="w-4 h-4 text-[#11345b]" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <h4 className="text-2xl font-black text-white text-center mb-4">预警平台</h4>
+                  <p className="text-sm text-white/60 text-center leading-relaxed mb-8">
+                    行业领先的实时数据处理中心，实现亚秒级分析与指令分发。
+                  </p>
+
+                  <div className="bg-white/5 backdrop-blur-md rounded-2xl p-4 border border-white/10">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-blue-400 rounded-full" />
+                        <span className="text-xs text-white/70 font-medium">数据输入</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-2 h-2 bg-[#fdbd00] rounded-full" />
+                        <span className="text-xs text-white/70 font-medium">信号分发</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </motion.div>
+              </div>
+
+              {/* Right Card - 执行预警 */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-[32px] p-8 shadow-xl border border-gray-100 relative h-full">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center">
+                      <Volume2 className="w-6 h-6 text-gray-600" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-black text-gray-900">执行预警</h4>
+                      <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">EXECUTE LEVEL</p>
+                    </div>
+                  </div>
+                  <span className="px-3 py-1.5 bg-green-500 text-white text-[10px] font-black rounded-lg">126 dB MAX</span>
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    { name: '扬声器单元 A', desc: 'MASTER UNIT', status: 'ONLINE' },
+                    { name: '扬声器单元 B', desc: '100M INTERVAL', status: 'ONLINE' },
+                    { name: '扬声器单元 C', desc: '100M INTERVAL', status: 'ONLINE' }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm border border-gray-100">
+                          <Volume2 className="w-5 h-5 text-gray-500" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-gray-900">{item.name}</p>
+                          <p className="text-[10px] text-gray-400 font-medium uppercase tracking-wider">{item.desc}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-black text-green-500">{item.status}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             </div>
 
             {/* Bottom: Running Standards */}
