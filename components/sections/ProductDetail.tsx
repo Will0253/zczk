@@ -122,7 +122,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
             </div>
             <div className="grid grid-cols-4 gap-4">
               {[1, 2, 3].map((i) => (
-                <div key={i} className={`aspect-square rounded-2xl overflow-hidden border-2 cursor-pointer transition-all ${i === 1 ? 'border-[#fdbd00] shadow-md shadow-[#fdbd00]/10' : 'border-gray-100 hover:border-gray-200'}`}>
+                <div key={i} className={`relative aspect-square rounded-2xl overflow-hidden border-2 cursor-pointer transition-all ${i === 1 ? 'border-[#fdbd00] shadow-md shadow-[#fdbd00]/10' : 'border-gray-100 hover:border-gray-200'}`}>
                   <ImageWithFallback src={product.image} alt={`thumb-${i}`} fill className="object-cover" />
                 </div>
               ))}
