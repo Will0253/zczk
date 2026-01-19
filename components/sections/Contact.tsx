@@ -13,7 +13,7 @@ const contactCategories = [
       { type: 'phone', label: '电话', value: '+86 400-123-4567', href: 'tel:+864001234567' },
       { type: 'time', label: '工作时间', value: '周一至周五 9:00 - 18:00' }
     ],
-    image: 'https://images.unsplash.com/photo-1758599543152-f0deb7b12d58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+    image: 'https://images.unsplash.com/photo-1475823678248-624fc6f85785'
   },
   {
     title: '技术支持',
@@ -190,10 +190,8 @@ export function Contact() {
                   </div>
                 </div>
 
-                <button className="mt-16 flex items-center gap-3 px-10 py-5 bg-[#11345b] text-white font-black rounded-2xl hover:bg-[#11345b]/90 transition-all shadow-xl shadow-[#11345b]/20 group">
-                  <span>下载详细路线图</span>
-                  <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-                </button>
+
+
               </motion.div>
             </div>
 

@@ -22,8 +22,6 @@ export const footerNavigation = {
     { label: '智能预警设备', href: '/products' },
     { label: '智慧交通安全解决方案', href: '/solutions' },
     { label: '高速养护监管平台', href: '/solutions/highway-safety' },
-    { label: '定制开发服务', href: '/contact' },
-    { label: '数据分析与应用', href: '/solutions' },
   ],
   legal: [
     { label: '隐私政策', href: '/privacy' },
