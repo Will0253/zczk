@@ -11,7 +11,7 @@ const newsItems = [
     title: 'ZCZ发布全新5G智能锥桶系统：重新定义高速公路智慧养护安全标准',
     date: '2023-10-15',
     summary: '集成最新V2X通信技术与高精度北斗定位模块，标志着安全管理进入数字化感知时代。',
-    image: 'https://images.unsplash.com/photo-1719580920868-9e7ee4c79a1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/smart-cone.jpg',
     tag: '产品动态',
     link: '/news/5g-smart-cone'
   },
@@ -20,7 +20,7 @@ const newsItems = [
     title: '智能声场预警系统迭代升级，高声压技术突破 148dB',
     date: '2025-10-15',
     summary: '500 米范围精准覆盖，雨天自动切换专属预警语音',
-    image: 'https://images.unsplash.com/photo-1663455256102-3892f6b33ab2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/news/news-2.jpg',
     tag: '技术迭代'
   },
   {
@@ -28,7 +28,7 @@ const newsItems = [
     title: '中创智控受邀参与智慧交通安全设备标准研讨',
     date: '2025-09-30',
     summary: '助力《"十四五"全国道路交通安全规划》落地实施',
-    image: 'https://images.unsplash.com/photo-1560523159-94c9d18bcf27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/news/news-3.jpg',
     tag: '标准制定'
   }
 ]

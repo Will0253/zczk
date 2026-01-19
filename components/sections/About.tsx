@@ -24,7 +24,7 @@ const bentoAdvantages = [
     desc: '基于自研深度学习架构，针对交通复杂场景优化，目标识别率 >99.8%。',
     icon: Brain,
     size: 'col-span-2 row-span-2',
-    img: 'https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    img: '/images/about/tech-dashboard.jpg',
     color: 'bg-blue-600/20',
   },
   {
@@ -139,7 +139,7 @@ export function About() {
                   <div className="flex -space-x-4">
                     {[1, 2, 3, 4].map(i => (
                       <div key={i} className="w-12 h-12 rounded-full border-2 border-[#11345b] bg-white/10 backdrop-blur-md overflow-hidden ring-2 ring-[#fdbd00]/20">
-                        <ImageWithFallback src={`https://images.unsplash.com/photo-1759884247387-a5d791ffb2bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=100`} alt="Avatar" fill className="object-cover opacity-80" />
+                        <ImageWithFallback src="/images/about/avatar.jpg" alt="Avatar" fill className="object-cover opacity-80" />
                       </div>
                     ))}
                     <div className="w-12 h-12 rounded-full border-2 border-[#11345b] bg-[#11345b] text-[#fdbd00] flex items-center justify-center text-xs font-bold ring-2 ring-[#fdbd00]/20">
@@ -160,7 +160,7 @@ export function About() {
               >
                 {/* Complex Layered Image Stack */}
                 <div className="absolute inset-0 rounded-[60px] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(17,52,91,0.5)] z-10">
-                  <ImageWithFallback src="https://images.unsplash.com/photo-1737531691773-2d4f1b79f650?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Tech Dashboard" fill className="object-cover grayscale-[30%]" />
+                  <ImageWithFallback src="/images/about/tech-dashboard.jpg" alt="Tech Dashboard" fill className="object-cover grayscale-[30%]" />
                 </div>
                 
                 {/* Floating UI Element 1 */}
@@ -269,7 +269,7 @@ export function About() {
                 transition={{ duration: 1 }}
                 className="relative rounded-[60px] overflow-hidden border border-gray-100 z-10 shadow-2xl group"
               >
-                <ImageWithFallback src="https://images.unsplash.com/photo-1762599180260-deb643596e99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Company Vision" fill className="w-full aspect-[4/5] object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <ImageWithFallback src="/images/about/company-vision.jpg" alt="Company Vision" fill className="w-full aspect-[4/5] object-cover transition-transform duration-1000 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#11345b]/40 via-transparent to-transparent"></div>
               </motion.div>
               
@@ -280,7 +280,7 @@ export function About() {
                 transition={{ duration: 1, delay: 0.3 }}
                 className="absolute -bottom-16 -right-16 w-2/3 rounded-[40px] overflow-hidden border-8 border-white shadow-2xl z-20 hidden md:block group"
               >
-                <ImageWithFallback src="https://images.unsplash.com/photo-1716772912302-6452fea6c2e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Hardware Detail" fill className="w-full aspect-square object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <ImageWithFallback src="/images/about/hardware-detail.jpg" alt="Hardware Detail" fill className="w-full aspect-square object-cover transition-transform duration-1000 group-hover:scale-110" />
               </motion.div>
 
               <div className="absolute -top-10 -left-10 w-48 h-48 border-2 border-[#fdbd00]/10 rounded-full animate-spin-slow"></div>

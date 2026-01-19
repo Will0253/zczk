@@ -7,19 +7,19 @@ const cases = [
   {
     title: '山西交控集团',
     description: '高速养护施工动态监管，实现施工区域防闯入与智能预警',
-    image: 'https://images.unsplash.com/photo-1765121689955-a868472089d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoaWdod2F5JTIwY29uc3RydWN0aW9uJTIwc2FmZXR5fGVufDF8fHx8MTc2NjI1NTIwMHww&ixlib=rb-4.1.0&q=80&w=1080',
-    tag: 'G1812 沧榆高速养护监管',
+    image: '/images/case-studies/highway-safety.jpg',
+    tag: 'G1812 槐榆高速养护监管',
   },
   {
     title: '广河高速',
     description: '预警路锥与预警精灵联动，打造施工区域多设备协同预警体系',
-    image: 'https://images.unsplash.com/photo-1757030689668-c7aa2975ca95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb2FkJTIwbWFpbnRlbmFuY2UlMjB3b3JrZXJzfGVufDF8fHx8MTc2NjI1NTIwMHww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/images/case-studies/road-maintenance.jpg',
     tag: '多设备协同预警',
   },
   {
     title: '广东地区行人摩托车防闯入项目',
     description: '部署智能安全预警系统，解决高速非法闯入治理痛点',
-    image: 'https://images.unsplash.com/photo-1630509867030-b7d68c7a3098?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoaWdod2F5JTIwdG9sbCUyMHN0YXRpb258ZW58MXx8fHwxNzY2MjU1MjY0fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/images/case-studies/toll-station.jpg',
     tag: '收费站智能预警',
   },
 ]

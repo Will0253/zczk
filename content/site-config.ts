@@ -25,7 +25,7 @@ export const siteConfig = {
     defaultDescription: '中创智控是智慧交通安全预警设备研发与应用服务商，提供智能预警锥桶、声光预警系统、车载防撞设备等产品及高速养护、隧道监测等解决方案。',
     defaultKeywords: ['智慧交通', '安全预警', '智能锥桶', '高速养护', '中创智控'],
     siteUrl: 'https://www.zczk.com',
-    ogImage: '/og-image.jpg',
+    ogImage: '/images/og-image.svg',
   },
   
   // 社交媒体

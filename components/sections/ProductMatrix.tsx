@@ -9,37 +9,37 @@ const products = [
     name: '智能预警路锥',
     specs: '132dB 强声+24G 雷达，200 米预警',
     color: 'from-[#fdbd00] to-[#ffd700]',
-    image: 'https://images.unsplash.com/photo-1763569026025-17f15c1012a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cmFmZmljJTIwc2FmZXR5JTIwY29uZXxlbnwxfHx8fDE3NjYyNTc2ODN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/product-matrix/traffic-safety-cone.jpg',
   },
   {
     name: 'AI 布控球',
     specs: '360°全景+20 倍变焦，12 小时续航',
     color: 'from-[#11345b] to-[#1a4d7a]',
-    image: 'https://images.unsplash.com/photo-1692830203762-9b46dd6e4dc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdXJ2ZWlsbGFuY2UlMjBjYW1lcmElMjBiYWxsfGVufDF8fHx8MTc2NjI1NzY4M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/product-matrix/surveillance-camera-ball.jpg',
   },
   {
     name: '智能声场预警系统',
     specs: '148dB 高声压，500 米覆盖',
     color: 'from-[#fdbd00] to-[#ffd700]',
-    image: 'https://images.unsplash.com/photo-1686709709573-a877d7012cf4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcGVha2VyJTIwc291bmQlMjBzeXN0ZW18ZW58MXx8fHwxNzY2MjU3NjgzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/product-matrix/speaker-sound-system.jpg',
   },
   {
     name: '智能定位肩灯',
     specs: '北斗定位+IP66 防水，5 天待机',
     color: 'from-[#11345b] to-[#1a4d7a]',
-    image: 'https://images.unsplash.com/photo-1763235851965-9efe071e8bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWQlMjBzYWZldHklMjBsaWdodHxlbnwxfHx8fDE3NjYyNTc2ODR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/product-matrix/led-safety-light.jpg',
   },
   {
     name: '便携式强声器',
     specs: '138dB 声压，1000 米传声',
     color: 'from-[#fdbd00] to-[#ffd700]',
-    image: 'https://images.unsplash.com/photo-1750710583720-8b3bdd0f658a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydCUyMHRlY2hub2xvZ3klMjBoYXJkd2FyZXxlbnwxfHx8fDE3NjYyNTc2ODR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/product-matrix/smart-technology-hardware.jpg',
   },
   {
     name: '车载防撞预警系统',
     specs: '148dB 定向预警，1 公里清晰',
     color: 'from-[#11345b] to-[#1a4d7a]',
-    image: 'https://images.unsplash.com/photo-1632080974800-8caa9c8e5337?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2ZWhpY2xlJTIwd2FybmluZyUyMGRldmljZXxlbnwxfHx8fDE3NjYyNTc2ODR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    image: '/images/product-matrix/vehicle-warning-device.jpg',
   },
 ]
 

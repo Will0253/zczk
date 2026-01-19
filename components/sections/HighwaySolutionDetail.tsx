@@ -57,7 +57,7 @@ const hardwareList = [
   {
     name: '预警路锥',
     icon: Bell,
-    image: 'https://images.unsplash.com/photo-1763569026025-17f15c1012a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cmFmZmljJTIwd2FybmluZyUyMGNvbmV8ZW58MXx8fHwxNzY2NDE4NDM1fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/images/highway/traffic-warning-cone.jpg',
     config: '24G雷达、实时视频流、定向强声器、高亮爆闪灯',
     features: '监测距离超150米，预警阀值可调，支持超速预警联动；远程查看、超速抓拍、本地存储；最大声压126分贝；可视距离2000米。',
     extras: '加大电池容量、增高支架、远程喊话、地图平台对接。'
@@ -65,7 +65,7 @@ const hardwareList = [
   {
     name: '预警肩灯',
     icon: Activity,
-    image: 'https://images.unsplash.com/photo-1618212624057-3ce6e5819cc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzYWZldHklMjBzaG91bGRlciUyMGxpZ2h0fGVufDF8fHx8MTc2NjQxODQzNXww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/images/highway/safety-shoulder-light.jpg',
     config: '声音报警、LORA传输、超长待机、高亮爆闪灯',
     features: 'LORA传输距离超500米，抗干扰强；待机2周；红蓝爆闪，夜间可视500米；内置蜂鸣器语音播报。',
     role: '联动路锥，提示施工人员避让，实现声光报警。'
@@ -73,7 +73,7 @@ const hardwareList = [
   {
     name: '防闯精灵',
     icon: Zap,
-    image: 'https://images.unsplash.com/photo-1625465588028-458f59e19ee6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb3Rpb24lMjBzZW5zb3IlMjBhbGFybSUyMGRldmljZXxlbnwxfHx8fDE3NjY0MTg0MzV8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/images/highway/motion-sensor-alarm.jpg',
     config: '闯入报警、LORA传输、超长待机、高亮爆闪灯',
     features: '内置蜂鸣器，支持语音播报、碰撞感知与闯入报警；LORA传输距离超500米，可联动相关设备。',
     role: '实现闯入感知，联动触发声光警报，跌倒可触发预警。'
@@ -81,7 +81,7 @@ const hardwareList = [
   {
     name: '便携式强声器',
     icon: Speaker,
-    image: 'https://images.unsplash.com/photo-1648522168473-dfec1d2a5cde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhY291c3RpYyUyMGhhaWxpbmclMjBkZXZpY2UlMjBtZWdhcGhvbmV8ZW58MXx8fHwxNzY2NDE4NDM1fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/images/highway/acoustic-hailing-device.jpg',
     config: '强声预警、无线喊话、灵活便携、高亮爆闪灯',
     features: '最大声压134分贝，核心声束角小于20度；LORA传输距离超300米，重量小于6KG。',
     role: '声光预警过往车辆，支持无线喊话，强声定向传播。'
@@ -89,7 +89,7 @@ const hardwareList = [
   {
     name: '智慧安全帽',
     icon: HardHat,
-    image: 'https://images.unsplash.com/photo-1682315847217-4226cfcdd250?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzbWFydCUyMHNhZmV0eSUyMGhlbG1ldCUyMGNhbWVyYXxlbnwxfHx8fDE3NjY0MTg0MzV8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/images/highway/smart-helmet-camera.jpg',
     config: '高精定位、实时视频、语音对讲、安全认证',
     features: 'GPS+北斗定位，轨迹回放；400万像素远程视频、SOS求救；远程语音对讲，符合国标认证。',
     role: '监控施工细节，实现人员轨迹查询与双向语音沟通。'
@@ -97,7 +97,7 @@ const hardwareList = [
   {
     name: 'AI 布控球',
     icon: Camera,
-    image: 'https://images.unsplash.com/photo-1666613789626-e8b9352639fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdHolMjBkb21lJTIwY2FtZXJhJTIwc2VjdXJpdHl8ZW58MXx8fHwxNzY2NDE4NDM1fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/images/highway/dome-camera.jpg',
     config: 'AI算法、实时视频流、本地存储、视频回放',
     features: '支持安全帽、反光衣、车牌、烟火识别；20倍变焦，360度旋转；64G TF卡存储。',
     role: '实现全场监控与360度视频记录回溯。'

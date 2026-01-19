@@ -4,7 +4,7 @@ const siteConfig = {
   name: '中创智控',
   description: '智慧交通安全预警系统领导者',
   url: 'https://www.zczk.com',
-  ogImage: '/images/og-image.jpg',
+  ogImage: '/images/og-image.svg',
 }
 
 export function createMetadata({

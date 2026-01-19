@@ -36,7 +36,7 @@ export const newsArticles: NewsArticle[] = [
 此次发布标志着交通安全管理正式进入数字化感知时代，为智慧交通基础设施建设提供了坚实的技术支撑。
     `,
     category: 'product',
-    image: 'https://images.unsplash.com/photo-1719580920868-9e7ee4c79a1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/smart-cone.jpg',
     publishedAt: '2023-10-15',
     author: '中创智控',
     featured: true,

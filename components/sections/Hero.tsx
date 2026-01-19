@@ -25,14 +25,13 @@ export function Hero() {
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
         <ImageWithFallback 
-          src="https://images.unsplash.com/photo-1699602050604-698045645108?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB0ZWNobm9sb2d5JTIwaW5mcmFzdHJ1Y3R1cmUlMjBzbWFydCUyMGNpdHl8ZW58MXx8fHwxNzY2MzAyMzgyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+          src="/images/hero/hero-background.jpg"
           alt="Technology Background"
           className="w-full h-full object-cover opacity-30"
           fill
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a1f3d]/80 via-transparent to-[#0a1f3d]"></div>
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] mix-blend-overlay"></div>
       </div>
 
       <div className="max-w-7xl w-full mx-auto px-6 sm:px-8 lg:px-12 relative z-10 py-20 lg:py-28">

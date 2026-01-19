@@ -15,7 +15,7 @@ export const products: Product[] = [
     shortDescription: '含移动岗哨形态',
     description: '一体化移动预警设备，集成雷达测速与声光报警功能，适配道路施工、应急布控场景',
     category: 'warning',
-    image: 'https://images.unsplash.com/photo-1673797830131-f91f04593e46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/smart-sentinel.jpg',
     features: [
       { label: '总功率', value: '100W' },
       { label: '续航', value: '8小时' }
@@ -29,7 +29,7 @@ export const products: Product[] = [
     shortDescription: '',
     description: '应急监控设备，支持快速部署与全向高清监控，适用于应急指挥、临时安防',
     category: 'warning',
-    image: 'https://images.unsplash.com/photo-1688584177352-a40d4ba17561?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/control-ball-v2.jpg',
     features: [
       { label: '快速部署', value: '1分钟' },
       { label: '续航时间', value: '12-20小时' }
@@ -43,7 +43,7 @@ export const products: Product[] = [
     shortDescription: '旗舰版 C100 / 智联版 A2',
     description: '物联网智能交通锥，集成了高精度北斗/GPS双模定位与姿态传感器，实现施工安全闭环管理',
     category: 'warning',
-    image: 'https://images.unsplash.com/photo-1719580920868-9e7ee4c79a1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/smart-cone.jpg',
     features: [
       { label: 'A1 续航', value: '12小时' },
       { label: 'A2 定位', value: 'RTK 亚米级' }
@@ -57,7 +57,7 @@ export const products: Product[] = [
     shortDescription: '',
     description: '人员安全管理设备，集成定位、预警与交互功能，适配户外作业、应急救援',
     category: 'sensing',
-    image: 'https://images.unsplash.com/photo-1652148555073-4b1d2ecd664c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/smart-shoulder-light.jpg',
     features: [
       { label: '净重', value: '88g' },
       { label: '防护等级', value: 'IP66' }
@@ -71,7 +71,7 @@ export const products: Product[] = [
     shortDescription: '',
     description: '场景化预警系统，支持远程管控与智能响应，适用于区域安全监管',
     category: 'warning',
-    image: 'https://images.unsplash.com/photo-1687858477673-267e301cb186?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/sound-field-warning.jpg',
     features: [
       { label: '覆盖范围', value: '≥200米' },
       { label: '声压级', value: '132dB' }
@@ -85,7 +85,7 @@ export const products: Product[] = [
     shortDescription: '',
     description: '车辆防撞设备，支持实时喊话与远距离预警，适配特种车辆安全管控',
     category: 'warning',
-    image: 'https://images.unsplash.com/photo-1626284142614-d8af54be478c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/vehicle-collision-warning.jpg',
     features: [
       { label: '峰值声压', value: '148dB' },
       { label: '语声传输', value: '1公里' }
@@ -99,7 +99,7 @@ export const products: Product[] = [
     shortDescription: '',
     description: '移动音频预警设备，支持多场景应急音频播放，适用于户外作业预警',
     category: 'sensing',
-    image: 'https://images.unsplash.com/photo-1648522168473-dfec1d2a5cde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/portable-loudspeaker.jpg',
     features: [
       { label: '声压级', value: '138dB' },
       { label: '轻量化', value: '≤5KG' }
@@ -113,7 +113,7 @@ export const products: Product[] = [
     shortDescription: '',
     description: '智能防护设备，集成摄录、定位与对讲功能，适用于户外作业管理',
     category: 'sensing',
-    image: 'https://images.unsplash.com/photo-1701522814779-2d0e40de3370?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/smart-helmet-4g.jpg',
     features: [
       { label: '净重', value: '560g' },
       { label: '电池容量', value: '4200mAh' }
@@ -127,7 +127,7 @@ export const products: Product[] = [
     shortDescription: '测速反馈屏',
     description: '交通测速设备，支持速度监测与信息反馈，适用于道路限速管控',
     category: 'sensing',
-    image: 'https://images.unsplash.com/photo-1620599464094-15206d7a2974?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/radar-speed-detector.jpg',
     features: [
       { label: '测速范围', value: '1-240km/h' },
       { label: '可视距离', value: '1000米' }
@@ -141,7 +141,7 @@ export const products: Product[] = [
     shortDescription: '',
     description: '智能应急处置系统，支持事件预警与快速响应，适用于公共安全管理',
     category: 'software',
-    image: 'https://images.unsplash.com/photo-1729184648234-7650c1484905?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/products/event-warning-system.jpg',
     features: [
       { label: '响应速度', value: '毫秒级' },
       { label: '处置链路', value: '全闭环' }

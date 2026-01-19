@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Phone, Mail, MapPin, ChevronRight, MessageCircle, Linkedin, Github } from 'lucide-react'
+import Image from 'next/image'
+import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react'
 import { motion } from 'motion/react'
 import { siteConfig } from '@/content/site-config'
 import { footerNavigation, socialLinks } from '@/content/navigation'
@@ -26,10 +27,10 @@ export function Footer() {
     }
   }
 
-  const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-    MessageCircle,
-    Linkedin,
-    Github,
+  const iconMap: Record<string, string> = {
+    Wechat: '/images/Wechat.svg',
+    QQ: '/images/QQ.svg',
+    Douyin: '/images/Douyin.svg',
   }
 
   return (
@@ -75,7 +76,7 @@ export function Footer() {
 
             <div className="flex items-center gap-3">
               {socialLinks.map((social, idx) => {
-                const Icon = iconMap[social.icon]
+                const iconSrc = iconMap[social.icon]
                 return (
                   <motion.a
                     key={idx}
@@ -85,7 +86,7 @@ export function Footer() {
                     whileTap={{ scale: 0.95 }}
                     className="w-9 h-9 rounded-lg border flex items-center justify-center"
                   >
-                    {Icon && <Icon className="w-4 h-4" />}
+                    <Image src={iconSrc} alt={social.label} width={16} height={16} />
                   </motion.a>
                 )
               })}

@@ -31,7 +31,7 @@ export const footerNavigation = {
 }
 
 export const socialLinks = [
-  { icon: 'MessageCircle', label: '微信', href: '#' },
-  { icon: 'Linkedin', label: '领英', href: '#' },
-  { icon: 'Github', label: 'GitHub', href: '#' },
+  { icon: 'Wechat', label: '微信', href: 'https://mp.weixin.qq.com/s/6Fg4xtlouoBLiViYjYaaTg' },
+  { icon: 'QQ', label: 'QQ', href: '#' },
+  { icon: 'Douyin', label: '抖音', href: 'https://v.douyin.com/eGhmbVGqRz4/' },
 ]

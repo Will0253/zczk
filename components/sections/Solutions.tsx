@@ -33,7 +33,7 @@ const moreScenarios = [
     desc: '解决景区高峰期人车混行难题。利用智能引导屏和流量相机，实时疏导车流，预防拥堵和交通事故。',
     icon: Trees,
     color: 'emerald',
-    image: 'https://images.unsplash.com/photo-1614984582840-fa690383e60c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+    image: '/images/solutions/smart-scenic.jpg'
   },
   {
     id: 'emergency',
@@ -41,7 +41,7 @@ const moreScenarios = [
     desc: '交通事故现场的快速部署系统。便携式雷达和预警屏可在5分钟内完成布设，为救援人员提供安全屏障。',
     icon: Siren,
     color: 'blue',
-    image: 'https://images.unsplash.com/photo-1708807472445-d33589e6b090?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+    image: '/images/solutions/emergency-dispatch.jpg'
   },
   {
     id: 'school',
@@ -49,7 +49,7 @@ const moreScenarios = [
     desc: '针对上下学时段的潮汐交通流，提供智能限速提醒与行人检测预警，保障学生过街安全。',
     icon: GraduationCap,
     color: 'purple',
-    image: 'https://images.unsplash.com/photo-1670334169994-f99cc0736faa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+    image: '/images/solutions/bridge-health.jpg'
   }
 ]
 
@@ -121,7 +121,7 @@ export function Solutions() {
             >
               <div className="aspect-[16/10] rounded-[40px] overflow-hidden shadow-2xl relative">
                 <ImageWithFallback 
-                  src="https://images.unsplash.com/photo-1631332419486-daf1322122c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" 
+                  src="/images/solutions/highway-safety.jpg"
                   alt="高速养护施工"
                   fill
                   className="object-cover"
@@ -240,7 +240,7 @@ export function Solutions() {
             >
               <div className="aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl relative">
                 <ImageWithFallback 
-                  src="https://images.unsplash.com/photo-1722532828784-a4cdc9b73fcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" 
+                  src="/images/solutions/tunnel-monitoring.jpg"
                   alt="隧道智慧监测"
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-1000"
@@ -269,7 +269,7 @@ export function Solutions() {
             >
               <div className="aspect-square rounded-[60px] overflow-hidden border-8 border-white/5 relative">
                 <ImageWithFallback 
-                  src="https://images.unsplash.com/photo-1740303226597-6521195103bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" 
+                  src="/images/solutions/bridge-health.jpg"
                   alt="桥梁健康监测"
                   fill
                   className="object-cover"

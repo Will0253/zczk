@@ -8,25 +8,25 @@ const scenarios = [
     icon: Truck,
     title: '高速公路安全管控',
     description: '隧道/桥梁预警、施工防闯入、事故快速处置、跨区域监管',
-    image: 'https://images.unsplash.com/photo-1765121689955-a868472089d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    image: '/images/business-scenarios/highway-construction.jpg',
   },
   {
     icon: HardHat,
     title: '道路养护作业安全',
     description: '人员防护、动态监控、来车声光预警、远程一体化管控',
-    image: 'https://images.unsplash.com/photo-1757030689668-c7aa2975ca95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    image: '/images/business-scenarios/road-maintenance.jpg',
   },
   {
     icon: Mountain,
     title: '景区交通分流预警',
     description: '停车场状态上报、路口分流、对接百度/高德导航',
-    image: 'https://images.unsplash.com/photo-1766060735908-eb10ee2a7cde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    image: '/images/business-scenarios/bridge-inspection.jpg',
   },
   {
     icon: Building2,
     title: '城市交通风险防控',
     description: '人员防护、动态监控、来车声光预警、远程一体化管控',
-    image: 'https://images.unsplash.com/photo-1764777447190-f9fa6a009df3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    image: '/images/business-scenarios/highway-construction.jpg',
   },
 ]
 

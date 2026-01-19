@@ -203,7 +203,7 @@ export function Contact() {
                 className="relative z-10 rounded-[60px] overflow-hidden shadow-2xl"
               >
                 <ImageWithFallback 
-                  src="https://images.unsplash.com/photo-1758872014553-f0deb7b12d58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200" 
+                  src="/images/contact/contact-hero.jpg"
                   alt="HQ Map"
                   fill
                   className="w-full aspect-[4/5] object-cover"

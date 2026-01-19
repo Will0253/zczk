@@ -1,0 +1,24 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1f3d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#11345b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#bg-gradient)"/>
+  
+  <text x="600" y="280" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#fdbd00" text-anchor="middle">
+    中创智控
+  </text>
+  
+  <text x="600" y="340" font-family="Arial, sans-serif" font-size="32" fill="#ffffff" text-anchor="middle">
+    智慧交通安全预警领航者
+  </text>
+  
+  <text x="600" y="400" font-family="Arial, sans-serif" font-size="24" fill="#cccccc" text-anchor="middle">
+    智能化·主动化升级
+  </text>
+  
+  <rect x="400" y="450" width="400" height="4" fill="#fdbd00"/>
+</svg>
