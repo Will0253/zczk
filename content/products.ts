@@ -2,10 +2,9 @@ import type { Product, ProductCategory } from '@/types/product'
 
 export const categories: { id: ProductCategory | 'all'; name: string; count: number }[] = [
   { id: 'all', name: '全部产品', count: 10 },
-  { id: 'warning', name: '智能预警硬件', count: 5 },
-  { id: 'sensing', name: '监测感知设备', count: 3 },
-  { id: 'inspection', name: '无人巡检系统', count: 2 },
-  { id: 'software', name: '软件与平台', count: 2 },
+  { id: 'warning', name: '智能预警硬件', count: 6 },
+  { id: 'sensing', name: '监测感知设备', count: 4 },
+  { id: 'inspection', name: '无人巡检系统', count: 0 },
 ]
 
 export const products: Product[] = [
@@ -140,7 +139,7 @@ export const products: Product[] = [
     name: '事件预警快处置系统',
     shortDescription: '',
     description: '智能应急处置系统，支持事件预警与快速响应，适用于公共安全管理',
-    category: 'software',
+    category: 'warning',
     image: '/images/products/event-warning-system.jpg',
     features: [
       { label: '响应速度', value: '毫秒级' },

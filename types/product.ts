@@ -9,7 +9,6 @@ export type ProductCategory =
   | 'warning'     // 智能预警硬件
   | 'sensing'     // 监测感知设备
   | 'inspection'  // 无人巡检系统
-  | 'software'    // 软件与平台
 
 export interface Product {
   /** 唯一标识符，用于 URL slug */
