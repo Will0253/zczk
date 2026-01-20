@@ -186,7 +186,12 @@ export function Footer() {
           transition={{ delay: 0.5 }}
           className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-[11px] tracking-wide text-gray-500 uppercase font-medium"
         >
-          <p>{siteConfig.copyright.text}</p>
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <p>{siteConfig.copyright.text}</p>
+            <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noopener noreferrer" className="hover:text-[#fdbd00] transition-colors">
+              粤ICP备2024280804号
+            </a>
+          </div>
           <div className="flex gap-8">
             {footerNavigation.legal.map((link, idx) => (
               <Link key={idx} href={link.href} className="hover:text-[#fdbd00] transition-colors relative group">

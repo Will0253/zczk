@@ -10,7 +10,7 @@ const contactCategories = [
     description: '针对大型交通项目的定制化解决方案咨询，以及区域代理商加盟洽谈。',
     icon: Globe,
     details: [
-      { type: 'phone', label: '电话', value: '+86 400-123-4567', href: 'tel:+864001234567' },
+      { type: 'phone', label: '电话', value: '+86 18823780560', href: 'tel:+8618823780560' },
       { type: 'time', label: '工作时间', value: '周一至周五 9:00 - 18:00' }
     ],
     image: '/images/contact/contact-1.jpg'
@@ -30,7 +30,7 @@ const contactCategories = [
     description: '媒体采访、品牌活动联络，以及人才招聘简历投递通道。',
     icon: MessageSquare,
     details: [
-      { type: 'mail', label: '邮箱', value: 'contact@zcz-tech.com', href: 'mailto:contact@zcz-tech.com' },
+      { type: 'mail', label: '邮箱', value: 'huangyan@szzczk.com', href: 'mailto:huangyan@szzczk.com' },
       { type: 'department', label: '部门', value: '总部行政中心' }
     ],
     image: '/images/contact/contact-3.jpg'

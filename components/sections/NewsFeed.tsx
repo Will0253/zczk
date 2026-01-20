@@ -21,7 +21,8 @@ const newsItems = [
     date: '2025-10-15',
     summary: '500 米范围精准覆盖，雨天自动切换专属预警语音',
     image: '/images/news/news-2.jpg',
-    tag: '技术迭代'
+    tag: '技术迭代',
+    link: '/news/sound-field-upgrade'
   },
   {
     id: 3,
@@ -29,7 +30,8 @@ const newsItems = [
     date: '2025-09-30',
     summary: '助力《"十四五"全国道路交通安全规划》落地实施',
     image: '/images/news/news-3.jpg',
-    tag: '标准制定'
+    tag: '标准制定',
+    link: '/news/traffic-safety-standard'
   }
 ]
 

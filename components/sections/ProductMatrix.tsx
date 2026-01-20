@@ -6,36 +6,42 @@ import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
 
 const products = [
   {
+    slug: 'smart-cone',
     name: '智能预警路锥',
     specs: '132dB 强声+24G 雷达，200 米预警',
     color: 'from-[#fdbd00] to-[#ffd700]',
     image: '/images/product-matrix/traffic-safety-cone.jpg',
   },
   {
+    slug: 'control-ball-v2',
     name: 'AI 布控球',
     specs: '360°全景+20 倍变焦，12 小时续航',
     color: 'from-[#11345b] to-[#1a4d7a]',
     image: '/images/product-matrix/surveillance-camera-ball.jpg',
   },
   {
+    slug: 'sound-field-warning',
     name: '智能声场预警系统',
     specs: '148dB 高声压，500 米覆盖',
     color: 'from-[#fdbd00] to-[#ffd700]',
     image: '/images/product-matrix/speaker-sound-system.jpg',
   },
   {
+    slug: 'smart-shoulder-light',
     name: '智能定位肩灯',
     specs: '北斗定位+IP66 防水，5 天待机',
     color: 'from-[#11345b] to-[#1a4d7a]',
     image: '/images/product-matrix/led-safety-light.jpg',
   },
   {
+    slug: 'portable-loudspeaker',
     name: '便携式强声器',
     specs: '138dB 声压，1000 米传声',
     color: 'from-[#fdbd00] to-[#ffd700]',
     image: '/images/product-matrix/smart-technology-hardware.jpg',
   },
   {
+    slug: 'vehicle-collision-warning',
     name: '车载防撞预警系统',
     specs: '148dB 定向预警，1 公里清晰',
     color: 'from-[#11345b] to-[#1a4d7a]',
@@ -72,8 +78,9 @@ export function ProductMatrix() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {products.map((product, index) => (
-            <div
+            <Link
               key={index}
+              href={`/products/${product.slug}`}
               className="group relative bg-white overflow-hidden rounded-2xl shadow-xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2"
             >
               {/* Gradient border effect */}
@@ -110,7 +117,7 @@ export function ProductMatrix() {
                 {/* Bottom accent line */}
                 <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${product.color} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

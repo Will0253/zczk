@@ -8,7 +8,7 @@ export const siteConfig = {
   // 联系信息
   contact: {
     phone: '18823780560',
-    email: 'contact@zczk.com',
+    email: 'huangyan@szzczk.com',
     address: '深圳市龙华区民治街道民治大道与民新路交界处',
   },
   
