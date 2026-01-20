@@ -25,7 +25,7 @@ export const products: Product[] = [
   },
   {
     slug: 'control-ball-v2',
-    name: '中创智控二代布控球',
+    name: 'AI 布控球',
     shortDescription: '',
     description: '应急监控设备，支持快速部署与全向高清监控，适用于应急指挥、临时安防',
     category: 'warning',
@@ -109,7 +109,7 @@ export const products: Product[] = [
   },
   {
     slug: 'smart-helmet-4g',
-    name: '中创智控二代4G智能安全帽',
+    name: '二代 4G 智能安全帽',
     shortDescription: '',
     description: '智能防护设备，集成摄录、定位与对讲功能，适用于户外作业管理',
     category: 'sensing',
@@ -123,7 +123,7 @@ export const products: Product[] = [
   },
   {
     slug: 'radar-speed-detector',
-    name: '中创智控交通雷达测速仪',
+    name: '交通雷达测速仪',
     shortDescription: '测速反馈屏',
     description: '交通测速设备，支持速度监测与信息反馈，适用于道路限速管控',
     category: 'sensing',

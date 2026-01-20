@@ -54,7 +54,7 @@ export function Navigation() {
 
           {/* Actions */}
           <div className="flex items-center gap-3 sm:gap-4">
-            <button className={`group relative hidden sm:flex items-center gap-2 px-6 py-2.5 rounded-xl overflow-hidden transition-all duration-300 transform hover:-translate-y-0.5 ${
+            <Link href="/contact" className={`group relative hidden sm:flex items-center gap-2 px-6 py-2.5 rounded-xl overflow-hidden transition-all duration-300 transform hover:-translate-y-0.5 ${
               scrolled 
                 ? 'bg-[#11345b] text-white shadow-lg shadow-[#11345b]/20' 
                 : 'bg-white/10 backdrop-blur-md text-white border border-white/20'
@@ -62,7 +62,7 @@ export function Navigation() {
               <span className="absolute inset-0 bg-gradient-to-r from-[#fdbd00] to-[#ffd700] translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
               <MessageSquare className={`w-4 h-4 relative z-10 transform group-hover:rotate-12 group-hover:text-[#11345b] transition-all duration-300`} />
               <span className="relative z-10 font-bold group-hover:text-[#11345b] transition-colors duration-300 text-sm">立即咨询</span>
-            </button>
+            </Link>
 
             {/* Mobile Menu Toggle */}
             <button 
@@ -111,10 +111,10 @@ export function Navigation() {
                 transition={{ delay: 0.3 }}
                 className="pt-4 px-4"
               >
-                <button className="w-full bg-[#11345b] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-[#11345b]/20">
+                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="w-full bg-[#11345b] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-[#11345b]/20">
                   <MessageSquare className="w-5 h-5" />
                   立即咨询
-                </button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

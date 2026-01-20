@@ -59,7 +59,7 @@ export const newsArticles: NewsArticle[] = [
 - 支持远程OTA升级
     `,
     category: 'tech',
-    image: 'https://images.unsplash.com/photo-1663455256102-3892f6b33ab2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/news/news-2.jpg',
     publishedAt: '2025-10-15',
     author: '中创智控',
     featured: true,
@@ -83,7 +83,7 @@ export const newsArticles: NewsArticle[] = [
 3. 安全评估体系建设
     `,
     category: 'standard',
-    image: 'https://images.unsplash.com/photo-1560523159-94c9d18bcf27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+    image: '/images/news/news-3.jpg',
     publishedAt: '2025-09-30',
     author: '中创智控',
     featured: false,

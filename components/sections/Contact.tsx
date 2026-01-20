@@ -13,7 +13,7 @@ const contactCategories = [
       { type: 'phone', label: '电话', value: '+86 400-123-4567', href: 'tel:+864001234567' },
       { type: 'time', label: '工作时间', value: '周一至周五 9:00 - 18:00' }
     ],
-    image: 'https://images.unsplash.com/photo-1475823678248-624fc6f85785'
+    image: '/images/contact/contact-1.jpg'
   },
   {
     title: '技术支持',
@@ -23,7 +23,7 @@ const contactCategories = [
       { type: 'phone', label: '电话', value: '+86 400-888-9999', href: 'tel:+864008889999' },
       { type: 'mail', label: '邮箱', value: 'support@zcz-tech.com', href: 'mailto:support@zcz-tech.com' }
     ],
-    image: 'https://images.unsplash.com/photo-1647866427893-0057366e91b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+    image: '/images/contact/contact-2.jpg'
   },
   {
     title: '综合事务',
@@ -33,7 +33,7 @@ const contactCategories = [
       { type: 'mail', label: '邮箱', value: 'contact@zcz-tech.com', href: 'mailto:contact@zcz-tech.com' },
       { type: 'department', label: '部门', value: '总部行政中心' }
     ],
-    image: 'https://images.unsplash.com/photo-1758448721149-aa0ce8e1b2c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+    image: '/images/contact/contact-3.jpg'
   }
 ]
 

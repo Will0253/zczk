@@ -168,10 +168,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex-1 px-10 py-5 bg-[#fdbd00] text-[#11345b] font-black rounded-2xl hover:bg-[#ffd700] transition-all shadow-xl shadow-[#fdbd00]/20 flex items-center justify-center gap-3">
+              <Link href="/contact" className="flex-1 px-10 py-5 bg-[#fdbd00] text-[#11345b] font-black rounded-2xl hover:bg-[#ffd700] transition-all shadow-xl shadow-[#fdbd00]/20 flex items-center justify-center gap-3">
                 <MessageSquare className="w-5 h-5" />
                 <span>立即咨询报价</span>
-              </button>
+              </Link>
               <button className="flex-1 px-10 py-5 bg-white border-2 border-gray-100 text-[#11345b] font-black rounded-2xl hover:bg-gray-50 transition-all flex items-center justify-center gap-3">
                 <Download className="w-5 h-5" />
                 <span>下载产品白皮书</span>

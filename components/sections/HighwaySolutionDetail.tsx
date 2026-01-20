@@ -41,8 +41,8 @@ import {
 import Link from 'next/link'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
 
-const slowLaneImg = 'https://images.unsplash.com/photo-1765121689955-a868472089d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
-const fastLaneImg = 'https://images.unsplash.com/photo-1757030689668-c7aa2975ca95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800'
+const slowLaneImg = '/images/highway/slow-lane.jpg'
+const fastLaneImg = '/images/highway/fast-lane.jpg'
 
 const painPoints = [
   { title: '成本高且不可靠', desc: '传统视频监控安装难、费用高，稳定性不足', icon: Zap },
@@ -55,7 +55,7 @@ const painPoints = [
 
 const hardwareList = [
   {
-    name: '预警路锥',
+    name: '智能预警锥桶',
     icon: Bell,
     image: '/images/highway/traffic-warning-cone.jpg',
     config: '24G雷达、实时视频流、定向强声器、高亮爆闪灯',
@@ -63,7 +63,7 @@ const hardwareList = [
     extras: '加大电池容量、增高支架、远程喊话、地图平台对接。'
   },
   {
-    name: '预警肩灯',
+    name: '智能定位肩灯',
     icon: Activity,
     image: '/images/highway/safety-shoulder-light.jpg',
     config: '声音报警、LORA传输、超长待机、高亮爆闪灯',
@@ -87,7 +87,7 @@ const hardwareList = [
     role: '声光预警过往车辆，支持无线喊话，强声定向传播。'
   },
   {
-    name: '智慧安全帽',
+    name: '二代 4G 智能安全帽',
     icon: HardHat,
     image: '/images/highway/smart-helmet-camera.jpg',
     config: '高精定位、实时视频、语音对讲、安全认证',
