@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Target, Eye, Heart, Brain, Users, Award, TrendingUp, Lightbulb, ShieldCheck, Zap, ChevronRight, History, Globe, Cpu, Layers } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
@@ -8,7 +9,7 @@ import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
 const stats = [
   { label: '研发精英', value: '100+', icon: Users, color: 'text-[#fdbd00]' },
   { label: '核心专利', value: '50+', icon: Award, color: 'text-white' },
-  { label: '覆盖里程', value: '12,000km+', icon: Globe, color: 'text-[#fdbd00]' },
+  { label: '覆盖里程', value: '12,00km+', icon: Globe, color: 'text-[#fdbd00]' },
 ]
 
 const milestones = [
@@ -129,13 +130,15 @@ export function About() {
                 </p>
                 
                 <div className="flex flex-wrap gap-8 items-center">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 bg-[#fdbd00] text-[#11345b] font-bold rounded-full shadow-[0_0_30px_rgba(253,189,0,0.3)] hover:shadow-[0_0_50px_rgba(253,189,0,0.5)] flex items-center gap-3 group"
-                  >
-                    探索核心技术 <ChevronRight className="group-hover:translate-x-1 transition-transform" />
-                  </motion.button>
+                  <Link href="/products">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-8 py-4 bg-[#fdbd00] text-[#11345b] font-bold rounded-full shadow-[0_0_30px_rgba(253,189,0,0.3)] hover:shadow-[0_0_50px_rgba(253,189,0,0.5)] flex items-center gap-3 group cursor-pointer"
+                    >
+                      探索核心技术 <ChevronRight className="group-hover:translate-x-1 transition-transform" />
+                    </motion.div>
+                  </Link>
                   <div className="flex -space-x-4">
                     {[1, 2, 3, 4].map(i => (
                       <div key={i} className="w-12 h-12 rounded-full border-2 border-[#11345b] bg-white/10 backdrop-blur-md overflow-hidden ring-2 ring-[#fdbd00]/20">
@@ -267,9 +270,9 @@ export function About() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1 }}
-                className="relative rounded-[60px] overflow-hidden border border-gray-100 z-10 shadow-2xl group"
+                className="relative aspect-[4/5] rounded-[60px] overflow-hidden border border-gray-100 z-10 shadow-2xl group"
               >
-                <ImageWithFallback src="/images/about/company-vision.jpg" alt="Company Vision" fill className="w-full aspect-[4/5] object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <ImageWithFallback src="/images/about/company-vision.jpg" alt="Company Vision" fill className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#11345b]/40 via-transparent to-transparent"></div>
               </motion.div>
               
@@ -278,9 +281,9 @@ export function About() {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="absolute -bottom-16 -right-16 w-2/3 rounded-[40px] overflow-hidden border-8 border-white shadow-2xl z-20 hidden md:block group"
+                className="absolute -bottom-16 -right-16 w-2/3 aspect-square rounded-[40px] overflow-hidden border-8 border-white shadow-2xl z-20 hidden md:block group"
               >
-                <ImageWithFallback src="/images/about/hardware-detail.jpg" alt="Hardware Detail" fill className="w-full aspect-square object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <ImageWithFallback src="/images/about/hardware-detail.jpg" alt="Hardware Detail" fill className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
               </motion.div>
 
               <div className="absolute -top-10 -left-10 w-48 h-48 border-2 border-[#fdbd00]/10 rounded-full animate-spin-slow"></div>
@@ -383,12 +386,6 @@ export function About() {
                 <div className="text-[#fdbd00] font-bold text-sm tracking-[0.4em] uppercase mb-4">Core Competency</div>
                 <h2 className="text-4xl lg:text-7xl text-[#11345b] font-bold tracking-tighter">驱动安全的核心技术</h2>
               </div>
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                className="px-8 py-4 bg-white border border-gray-100 text-[#11345b] font-bold rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center gap-3"
-              >
-                查看技术白皮书 <ChevronRight className="w-4 h-4" />
-              </motion.button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-[280px]">
@@ -484,8 +481,9 @@ export function About() {
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#fdbd00]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
               <h2 className="text-4xl lg:text-7xl text-[#11345b] font-bold mb-10 tracking-tighter">期待与您共同<br /><span className="text-[#fdbd00]">筑就安全未来</span></h2>
               <div className="flex flex-col md:flex-row gap-6 justify-center">
-                <button className="px-10 py-5 bg-[#11345b] text-white font-bold rounded-2xl hover:scale-105 transition-transform shadow-lg shadow-blue-900/20">立即联系我们</button>
-                <button className="px-10 py-5 bg-white border border-gray-200 text-[#11345b] font-bold rounded-2xl hover:bg-gray-50 transition-colors">获取技术白皮书</button>
+                <Link href="/contact">
+                  <button className="px-10 py-5 bg-[#11345b] text-white font-bold rounded-2xl hover:scale-105 transition-transform shadow-lg shadow-blue-900/20">立即联系我们</button>
+                </Link>
               </div>
             </motion.div>
           </div>
