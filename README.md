@@ -96,9 +96,11 @@ zczk/
 │   │   ├── NewsFeed.tsx         # 新闻列表
 │   │   ├── NewsDetail.tsx       # 新闻详情
 │   │   ├── ProductDetail.tsx    # 产品详情
+│   │   ├── ProductRecommendations.tsx # 产品推荐
 │   │   ├── HighwaySolutionDetail.tsx # 高速公路解决方案详情
 │   │   ├── About.tsx            # 关于我们
 │   │   ├── Contact.tsx          # 联系我们
+│   │   ├── ContactCard.tsx      # 联系卡片
 │   │   ├── Products.tsx         # 产品中心
 │   │   ├── Solutions.tsx        # 解决方案
 │   │   └── News.tsx             # 资讯中心
@@ -141,7 +143,7 @@ zczk/
 └── README.md                    # 项目说明文档
 ```
 
-## 安装
+## 快速开始
 
 ### 前置要求
 - Node.js >= 18.0.0
@@ -152,8 +154,6 @@ zczk/
 ```bash
 pnpm install
 ```
-
-## 启动
 
 ### 开发模式
 
@@ -199,7 +199,7 @@ pnpm lint
 - `/news/5g-smart-cone` - 5G 智能锥桶新闻详情
 - `/contact` - 联系我们
 
-## 特性
+## 功能特性
 
 ### 架构特性
 - **Next.js 15 App Router** - 基于文件系统的路由，支持服务端组件和客户端组件
@@ -275,6 +275,36 @@ pnpm lint
 
 Tailwind CSS v4 自动处理所有必需的 PostCSS 插件，无需额外配置。
 
+## 常见问题解答
+
+### 如何添加新的产品？
+
+1. 在 `content/products.ts` 中添加产品数据
+2. 在 `types/product.ts` 中确保类型定义正确
+3. 在 `app/products/[slug]/page.tsx` 中会自动渲染产品详情页
+
+### 如何修改主题颜色？
+
+主题颜色在 `app/globals.css` 中通过 CSS 变量定义：
+- `--zczk-blue` - 品牌蓝色
+- `--zczk-gold` - 品牌金色
+
+### 如何添加新的页面？
+
+在 `app/` 目录下创建新的文件夹和 `page.tsx` 文件，Next.js 会自动创建对应的路由。
+
+### 如何配置 SEO？
+
+在各个页面的 `page.tsx` 中导出 `metadata` 对象，或使用 `generateMetadata` 函数动态生成元数据。
+
+### 如何部署到生产环境？
+
+1. 运行 `pnpm build` 构建项目
+2. 将 `.next/` 目录和 `public/` 目录部署到服务器
+3. 运行 `pnpm start` 启动生产服务器
+
+或使用 Vercel、Netlify 等平台进行一键部署。
+
 ## 浏览器支持
 
 - Chrome (最新版本)
@@ -284,20 +314,14 @@ Tailwind CSS v4 自动处理所有必需的 PostCSS 插件，无需额外配置�
 
 ## 项目信息
 
-### 公司信息
-- **公司名称**: 深圳市中创智控技术有限公司
-- **品牌名称**: 中创智控
-- **品牌口号**: 智慧交通安全预警领航者
-- **品牌色彩**: 
-  - 深蓝色: `#11345b`
-  - 金色: `#fdbd00`
+
 
 ### 项目状态
 本项目已完成从 React + Vite 到 Next.js 15 App Router 的迁移。迁移规格文档位于 `specs/001-nextjs-migration/` 目录。
 
 ### 许可证
 
-私有项目
+MIT License
 
 ### 联系方式
 
