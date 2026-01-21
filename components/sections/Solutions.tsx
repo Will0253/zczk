@@ -225,11 +225,13 @@ export function Solutions() {
                   </div>
                 ))}
               </div>
-
+              
+              {/*
               <button className="inline-flex items-center gap-3 text-[#11345b] font-black group">
                 <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
                 <span className="border-b-2 border-[#fdbd00]">下载技术白皮书</span>
               </button>
+              */}
             </motion.div>
 
             <motion.div
@@ -320,11 +322,12 @@ export function Solutions() {
                 ))}
               </div>
 
-              {/* 🧩 Added Download Button (Consistency with Scenario 02) */}
+              {/* 🧩 Added Download Button (Consistency with Scenario 02) 
               <button className="inline-flex items-center gap-3 text-white font-black group">
                 <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform text-[#fdbd00]" />
                 <span className="border-b-2 border-[#fdbd00] hover:text-[#fdbd00] transition-colors">下载技术白皮书</span>
               </button>
+              */}
             </motion.div>
           </div>
         </div>
@@ -367,10 +370,12 @@ export function Solutions() {
               <div className="p-10">
                 <h3 className="text-2xl font-bold text-[#11345b] mb-4 group-hover:text-[#fdbd00] transition-colors">{item.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed mb-8">{item.desc}</p>
+                {/* 
                 <button className="text-sm font-black text-[#11345b] flex items-center gap-2 group/btn">
                   <span>了解方案详情</span>
                   <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </button>
+                */}
               </div>
             </motion.div>
           ))}
