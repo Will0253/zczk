@@ -174,14 +174,16 @@ export function Products() {
                       </div>
 
                       {/* CTA Button */}
-                      <Link 
-                        href={`/products/${p.slug}`}
-                        className="w-full py-4 bg-[#11345b] text-white font-bold rounded-2xl flex items-center justify-center gap-2 group/btn relative overflow-hidden transition-all text-center"
+                      <a
+                        href={p.taobaoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-4 bg-[#11345b] text-white font-bold rounded-2xl flex items-center justify-center gap-2 group/btn relative overflow-hidden transition-all text-center cursor-pointer"
                       >
                         <span className="relative z-10">查看详情</span>
                         <ChevronRight className="w-4 h-4 relative z-10 group-hover/btn:translate-x-1 transition-transform" />
                         <div className="absolute inset-0 bg-[#fdbd00] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500" />
-                      </Link>
+                      </a>
                     </div>
                   </motion.div>
                 ))}

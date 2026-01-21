@@ -21,6 +21,7 @@ export const products: Product[] = [
     ],
     featured: true,
     order: 1,
+    taobaoLink: 'https://item.taobao.com/item.htm?id=997654225612',
   },
   {
     slug: 'control-ball-v2',
@@ -35,6 +36,7 @@ export const products: Product[] = [
     ],
     featured: false,
     order: 2,
+    taobaoLink: 'https://item.taobao.com/item.htm?id=887654225613',
   },
   {
     slug: 'smart-cone',
@@ -49,6 +51,7 @@ export const products: Product[] = [
     ],
     featured: true,
     order: 3,
+    taobaoLink: 'https://item.taobao.com/item.htm?id=777654225614',
   },
   {
     slug: 'smart-shoulder-light',
@@ -63,6 +66,7 @@ export const products: Product[] = [
     ],
     featured: false,
     order: 4,
+    taobaoLink: 'https://item.taobao.com/item.htm?id=667654225615',
   },
   {
     slug: 'sound-field-warning',
@@ -77,6 +81,7 @@ export const products: Product[] = [
     ],
     featured: true,
     order: 5,
+    taobaoLink: 'https://item.taobao.com/item.htm?id=557654225616',
   },
   {
     slug: 'vehicle-collision-warning',
@@ -91,6 +96,7 @@ export const products: Product[] = [
     ],
     featured: false,
     order: 6,
+    taobaoLink: 'https://item.taobao.com/item.htm?id=447654225617',
   },
   {
     slug: 'portable-loudspeaker',
@@ -105,6 +111,7 @@ export const products: Product[] = [
     ],
     featured: false,
     order: 7,
+    taobaoLink: 'https://item.taobao.com/item.htm?id=337654225618',
   },
   {
     slug: 'smart-helmet-4g',
@@ -119,6 +126,7 @@ export const products: Product[] = [
     ],
     featured: false,
     order: 8,
+    taobaoLink: 'https://item.taobao.com/item.htm?id=227654225619',
   },
   {
     slug: 'radar-speed-detector',
@@ -133,6 +141,7 @@ export const products: Product[] = [
     ],
     featured: false,
     order: 9,
+    taobaoLink: 'https://item.taobao.com/item.htm?id=117654225620',
   },
   {
     slug: 'event-warning-system',
@@ -147,6 +156,7 @@ export const products: Product[] = [
     ],
     featured: true,
     order: 10,
+    taobaoLink: 'https://item.taobao.com/item.htm?id=007654225621',
   },
 ]
 

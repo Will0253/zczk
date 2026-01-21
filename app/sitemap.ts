@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-import { getAllProductSlugs } from '@/content/products'
 import { getAllSolutionSlugs } from '@/content/solutions'
 import { getAllNewsSlugs } from '@/content/news'
 import { siteConfig } from '@/content/site-config'
@@ -47,14 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // 产品详情页
-  const productPages: MetadataRoute.Sitemap = getAllProductSlugs().map((slug) => ({
-    url: `${baseUrl}/products/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }))
-
   // 解决方案详情页
   const solutionPages: MetadataRoute.Sitemap = getAllSolutionSlugs().map((slug) => ({
     url: `${baseUrl}/solutions/${slug}`,
@@ -71,5 +62,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  return [...staticPages, ...productPages, ...solutionPages, ...newsPages]
+  return [...staticPages, ...solutionPages, ...newsPages]
 }

@@ -33,4 +33,6 @@ export interface Product {
   featured: boolean
   /** 排序权重 (越大越靠前) */
   order: number
+  /** 淘宝链接 */
+  taobaoLink: string
 }
