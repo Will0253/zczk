@@ -243,21 +243,23 @@ export function NewsDetail({ article }: NewsDetailProps) {
                 </div>
 
                 {/* CTA Card */}
-                <div className="relative overflow-hidden rounded-[32px] bg-[#11345b] p-8 text-center text-white">
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[size:20px_20px]" />
-                  </div>
-                  <div className="relative z-10">
-                    <div className="w-12 h-12 bg-[#fdbd00]/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <MessageCircle className="w-6 h-6 text-[#fdbd00]" />
+                <div className="bg-[#11345b] p-6 rounded-[32px] text-white relative overflow-hidden group aspect-square flex flex-col">
+                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/5 rounded-full group-hover:scale-150 transition-transform duration-700" />
+                  <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
+                    <div className="w-10 h-10 bg-[#fdbd00]/20 rounded-full flex items-center justify-center mb-4">
+                      <MessageCircle className="w-5 h-5 text-[#fdbd00]" />
                     </div>
-                    <h4 className="text-xl font-bold mb-4">需要定制解决方案？</h4>
-                    <p className="text-white/60 text-sm mb-8">
-                      我们的专家团队为您提供专业咨询与现场勘查。
+                    <h4 className="text-lg font-bold mb-2">关注微信公众号</h4>
+                    <p className="text-white/60 text-xs mb-6 px-4">
+                      获取最新的产品更新和行业洞察。
                     </p>
-                    <Link href="/contact" className="block w-full bg-[#fdbd00] text-[#11345b] py-4 rounded-2xl font-black text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-[#fdbd00]/20">
-                      联系我们
-                    </Link>
+                    <ImageWithFallback 
+                      src="/images/news/WeChat-public-account.jpg"
+                      alt="微信公众号二维码"
+                      width={160}
+                      height={160}
+                      className="w-full max-w-[160px] rounded-xl"
+                    />
                   </div>
                 </div>
               </motion.div>

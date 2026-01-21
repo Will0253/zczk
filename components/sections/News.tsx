@@ -123,20 +123,18 @@ export function News() {
               <div className="bg-[#11345b] p-10 rounded-[40px] text-white relative overflow-hidden group">
                 <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full group-hover:scale-150 transition-transform duration-700" />
                 <Mail className="w-10 h-10 text-[#fdbd00] mb-6" />
-                <h4 className="text-xl font-bold mb-3 relative z-10">订阅电子期刊</h4>
+                <h4 className="text-xl font-bold mb-3 relative z-10">关注微信公众号</h4>
                 <p className="text-sm text-gray-400 mb-8 relative z-10 leading-relaxed">
                   获取最新的产品更新和行业洞察。
                 </p>
-                <div className="space-y-4 relative z-10">
-                  <input 
-                    type="email" 
-                    placeholder="您的邮箱地址"
-                    className="w-full px-5 py-3.5 bg-white/10 border-none rounded-2xl text-sm text-white placeholder:text-gray-500 focus:ring-2 focus:ring-[#fdbd00] transition-all"
+                <div className="relative z-10">
+                  <ImageWithFallback 
+                    src="/images/news/WeChat-public-account.jpg"
+                    alt="微信公众号二维码"
+                    width={200}
+                    height={200}
+                    className="w-full rounded-2xl"
                   />
-                  <button className="w-full py-4 bg-[#fdbd00] text-[#11345b] font-black rounded-2xl flex items-center justify-center gap-2 hover:bg-[#ffd700] transition-colors shadow-xl shadow-[#fdbd00]/10">
-                    <span>立即订阅</span>
-                    <Bell className="w-4 h-4" />
-                  </button>
                 </div>
               </div>
 
