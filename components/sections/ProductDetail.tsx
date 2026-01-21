@@ -5,6 +5,8 @@ import { ChevronRight, Star, Navigation, Bell, Battery, Signal, MessageSquare, D
 import { motion } from 'motion/react'
 import { useState } from 'react'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
+import { ProductRecommendations } from '@/components/sections/ProductRecommendations'
+import { ContactCard } from '@/components/sections/ContactCard'
 import type { Product } from '@/types/product'
 
 interface ProductDetailProps {
@@ -172,10 +174,6 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 <MessageSquare className="w-5 h-5" />
                 <span>立即咨询报价</span>
               </Link>
-              <button className="flex-1 px-10 py-5 bg-white border-2 border-gray-100 text-[#11345b] font-black rounded-2xl hover:bg-gray-50 transition-all flex items-center justify-center gap-3">
-                <Download className="w-5 h-5" />
-                <span>下载产品白皮书</span>
-              </button>
             </div>
 
             <div className="mt-8 p-6 bg-blue-50/50 rounded-2xl flex items-center gap-4 border border-blue-100">
@@ -202,9 +200,6 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 className={`py-8 text-sm font-black uppercase tracking-widest relative transition-colors ${activeTab === tab ? 'text-[#11345b]' : 'text-gray-400 hover:text-gray-600'}`}
               >
                 {tab === 'details' && '产品详情'}
-                {tab === 'specs' && '技术参数'}
-                {tab === 'guide' && '应用指南'}
-                {tab === 'download' && '下载资料'}
                 {activeTab === tab && (
                   <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 right-0 h-1 bg-[#fdbd00]" />
                 )}
@@ -287,50 +282,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
             <aside className="lg:w-1/3 space-y-10">
               
               {/* Recommendations */}
-              <div className="bg-white p-10 rounded-[40px] border border-gray-100 shadow-sm">
-                <h4 className="text-xl font-bold text-[#11345b] mb-8 pb-4 border-b border-gray-50 flex items-center gap-3">
-                  <Zap className="w-5 h-5 text-[#fdbd00]" />
-                  配套推荐
-                </h4>
-                <div className="space-y-8">
-                  {recommendations.map((item, i) => (
-                    <div key={i} className="group cursor-pointer">
-                      <div className="flex gap-5">
-                        <div className="w-14 h-14 bg-gray-50 rounded-2xl flex-shrink-0 flex items-center justify-center group-hover:bg-[#fdbd00]/10 transition-colors">
-                          <item.icon className="w-6 h-6 text-[#11345b]" />
-                        </div>
-                        <div>
-                          <h5 className="font-bold text-[#11345b] mb-1 group-hover:text-[#fdbd00] transition-colors">{item.title}</h5>
-                          <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <ProductRecommendations recommendations={recommendations} />
 
               {/* Call to Action Card */}
-              <div className="bg-[#11345b] p-12 rounded-[50px] text-white relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl" />
-                <div className="relative z-10 text-center">
-                  <div className="w-16 h-16 bg-[#fdbd00] rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-[#fdbd00]/20 group-hover:scale-110 transition-transform">
-                    <Headphones className="w-8 h-8 text-[#11345b]" />
-                  </div>
-                  <h4 className="text-2xl font-bold mb-4">需要定制解决方案？</h4>
-                  <p className="text-gray-400 text-sm mb-10 leading-relaxed">
-                    我们的工程师随时准备为您提供专业的技术咨询与方案设计。
-                  </p>
-                  <div className="space-y-4">
-                    <Link href="/contact" className="w-full py-5 bg-[#fdbd00] text-[#11345b] font-black rounded-2xl hover:bg-[#ffd700] transition-all shadow-xl shadow-[#fdbd00]/10 block text-center">
-                      联系销售工程师
-                    </Link>
-                    <div className="text-sm">
-                      <span className="text-gray-500">或拨打: </span>
-                      <a href="tel:4008889999" className="text-white font-bold hover:text-[#fdbd00]">400-888-9999</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ContactCard />
 
             </aside>
           </div>
