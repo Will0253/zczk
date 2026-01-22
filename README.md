@@ -52,81 +52,89 @@
 
 ```
 zczk/
-├── app/                          # Next.js App Router 目录
-│   ├── about/                    # 关于我们页面
-│   │   └── page.tsx
-│   ├── contact/                  # 联系我们页面
-│   │   └── page.tsx
-│   ├── news/                     # 新闻资讯
-│   │   ├── page.tsx              # 新闻列表页
-│   │   └── [slug]/              # 动态路由
-│   │       └── page.tsx         # 新闻详情页
-│   ├── products/                 # 产品中心
-│   │   ├── page.tsx             # 产品列表页
-│   │   └── [slug]/             # 动态路由
-│   │       └── page.tsx        # 产品详情页
-│   ├── solutions/                # 解决方案
-│   │   ├── page.tsx            # 解决方案列表页
-│   │   └── [slug]/            # 动态路由
-│   │       └── page.tsx       # 解决方案详情页
-│   ├── globals.css              # 全局样式（包含 Tailwind CSS）
-│   ├── layout.tsx               # 根布局组件
-│   ├── loading.tsx              # 全局加载状态
-│   ├── not-found.tsx            # 404 页面
-│   ├── error.tsx                # 错误页面
-│   ├── page.tsx                 # 首页
-│   ├── robots.ts                # SEO robots.txt
-│   └── sitemap.ts               # SEO sitemap.xml
-├── components/                   # React 组件目录
-│   ├── figma/                   # Figma 相关组件
-│   │   └── ImageWithFallback.tsx
-│   ├── layout/                  # 布局组件
-│   │   ├── Navigation.tsx       # 导航栏
-│   │   ├── Footer.tsx           # 页脚
-│   │   └── ScrollProgress.tsx   # 滚动进度条
-│   ├── providers/               # Context Providers
-│   │   └── Providers.tsx
-│   ├── sections/                # 页面区块组件
-│   │   ├── Hero.tsx             # 首页英雄区域
-│   │   ├── BusinessScenarios.tsx # 业务场景
-│   │   ├── ProductMatrix.tsx    # 产品矩阵
-│   │   ├── TechnicalStrength.tsx # 技术实力
-│   │   ├── CaseStudies.tsx      # 案例研究
-│   │   ├── Services.tsx         # 服务介绍
-│   │   ├── NewsFeed.tsx         # 新闻列表
-│   │   ├── NewsDetail.tsx       # 新闻详情
-│   │   ├── ProductDetail.tsx    # 产品详情
-│   │   ├── ProductRecommendations.tsx # 产品推荐
-│   │   ├── HighwaySolutionDetail.tsx # 高速公路解决方案详情
-│   │   ├── About.tsx            # 关于我们
-│   │   ├── Contact.tsx          # 联系我们
-│   │   ├── ContactCard.tsx      # 联系卡片
-│   │   ├── Products.tsx         # 产品中心
-│   │   ├── Solutions.tsx        # 解决方案
-│   │   └── News.tsx             # 资讯中心
-│   └── ui/                      # UI 基础组件（基于 Radix UI）
-│       ├── button.tsx
-│       └── card.tsx
-├── content/                      # 内容数据目录
-│   ├── index.ts                 # 内容导出
-│   ├── navigation.ts            # 导航配置
-│   ├── news.ts                  # 新闻数据
-│   ├── products.ts              # 产品数据
-│   ├── site-config.ts           # 网站配置
-│   └── solutions.ts             # 解决方案数据
-├── lib/                         # 工具函数目录
-│   ├── cn.ts                    # 类名合并工具
-│   └── metadata.ts              # 元数据工具
-├── public/                      # 静态资源目录
-│   └── images/                  # 图片资源
-├── types/                       # TypeScript 类型定义
-│   ├── index.ts
-│   ├── navigation.ts
-│   ├── news.ts
-│   ├── product.ts
-│   └── solution.ts
-├── specs/                       # 规格文档目录
-│   └── 001-nextjs-migration/    # Next.js 迁移规格
+├── frontend/                     # 前端应用目录
+│   ├── app/                     # Next.js App Router 目录
+│   │   ├── about/               # 关于我们页面
+│   │   │   └── page.tsx
+│   │   ├── contact/             # 联系我们页面
+│   │   │   └── page.tsx
+│   │   ├── news/                # 新闻资讯
+│   │   │   ├── page.tsx        # 新闻列表页
+│   │   │   └── [slug]/        # 动态路由
+│   │   │       └── page.tsx   # 新闻详情页
+│   │   ├── products/            # 产品中心
+│   │   │   ├── page.tsx        # 产品列表页
+│   │   │   └── [slug]/        # 动态路由
+│   │   │       └── page.tsx   # 产品详情页
+│   │   ├── solutions/           # 解决方案
+│   │   │   ├── page.tsx       # 解决方案列表页
+│   │   │   └── [slug]/       # 动态路由
+│   │   │       └── page.tsx  # 解决方案详情页
+│   │   ├── globals.css         # 全局样式（包含 Tailwind CSS）
+│   │   ├── layout.tsx          # 根布局组件
+│   │   ├── loading.tsx         # 全局加载状态
+│   │   ├── not-found.tsx       # 404 页面
+│   │   ├── error.tsx           # 错误页面
+│   │   ├── page.tsx            # 首页
+│   │   ├── robots.ts           # SEO robots.txt
+│   │   └── sitemap.ts          # SEO sitemap.xml
+│   ├── components/              # React 组件目录
+│   │   ├── figma/              # Figma 相关组件
+│   │   │   └── ImageWithFallback.tsx
+│   │   ├── layout/             # 布局组件
+│   │   │   ├── Navigation.tsx  # 导航栏
+│   │   │   ├── Footer.tsx      # 页脚
+│   │   │   └── ScrollProgress.tsx  # 滚动进度条
+│   │   ├── providers/          # Context Providers
+│   │   │   └── Providers.tsx
+│   │   ├── sections/           # 页面区块组件
+│   │   │   ├── Hero.tsx       # 首页英雄区域
+│   │   │   ├── BusinessScenarios.tsx # 业务场景
+│   │   │   ├── ProductMatrix.tsx    # 产品矩阵
+│   │   │   ├── TechnicalStrength.tsx # 技术实力
+│   │   │   ├── CaseStudies.tsx      # 案例研究
+│   │   │   ├── Services.tsx         # 服务介绍
+│   │   │   ├── NewsFeed.tsx         # 新闻列表
+│   │   │   ├── NewsDetail.tsx       # 新闻详情
+│   │   │   ├── ProductDetail.tsx    # 产品详情
+│   │   │   ├── ProductRecommendations.tsx # 产品推荐
+│   │   │   ├── HighwaySolutionDetail.tsx # 高速公路解决方案详情
+│   │   │   ├── About.tsx            # 关于我们
+│   │   │   ├── Contact.tsx          # 联系我们
+│   │   │   ├── ContactCard.tsx      # 联系卡片
+│   │   │   ├── Products.tsx         # 产品中心
+│   │   │   ├── Solutions.tsx        # 解决方案
+│   │   │   └── News.tsx             # 资讯中心
+│   │   └── ui/                  # UI 基础组件（基于 Radix UI）
+│   │       ├── button.tsx
+│   │       └── card.tsx
+│   ├── content/                 # 内容数据目录
+│   │   ├── index.ts            # 内容导出
+│   │   ├── navigation.ts       # 导航配置
+│   │   ├── news.ts            # 新闻数据
+│   │   ├── products.ts        # 产品数据
+│   │   ├── site-config.ts     # 网站配置
+│   │   └── solutions.ts       # 解决方案数据
+│   ├── lib/                    # 工具函数目录
+│   │   ├── cn.ts             # 类名合并工具
+│   │   └── metadata.ts       # 元数据工具
+│   ├── public/                 # 静态资源目录
+│   │   └── images/            # 图片资源
+│   ├── types/                  # TypeScript 类型定义
+│   │   ├── index.ts
+│   │   ├── navigation.ts
+│   │   ├── news.ts
+│   │   ├── product.ts
+│   │   └── solution.ts
+│   ├── .eslintrc.json         # ESLint 配置
+│   ├── .gitignore             # Git 忽略文件
+│   ├── next.config.ts         # Next.js 配置
+│   ├── package.json           # 项目配置
+│   ├── pnpm-lock.yaml         # pnpm 锁文件
+│   ├── postcss.config.mjs     # PostCSS 配置
+│   └── tsconfig.json         # TypeScript 配置
+├── specs/                     # 规格文档目录
+│   └── 001-nextjs-migration/  # Next.js 迁移规格
 │       ├── spec.md
 │       ├── plan.md
 │       ├── tasks.md
@@ -134,14 +142,45 @@ zczk/
 │       ├── data-model.md
 │       ├── contracts/
 │       └── checklists/
-├── .gitignore                    # Git 忽略文件
-├── next.config.ts               # Next.js 配置
-├── package.json                 # 项目配置
-├── pnpm-lock.yaml               # pnpm 锁文件
-├── postcss.config.mjs           # PostCSS 配置
-├── tsconfig.json                # TypeScript 配置
-└── README.md                    # 项目说明文档
+├── .qoder/                   # Qoder 配置
+├── .specify/                 # Specify 配置
+├── .gitignore                # 根目录 Git 忽略文件
+├── README.md                 # 项目说明文档
+└── QODER.md                 # Qoder 文档
 ```
+
+## 架构说明
+
+### 前后端分离架构
+
+本项目采用前后端分离的架构设计：
+
+- **frontend/** - 前端应用（Next.js 15 + React）
+  - 负责用户界面和交互
+  - 使用 Next.js App Router 进行页面路由
+  - 支持服务端渲染（SSR）和静态生成（SSG）
+  - 提供丰富的动画和交互体验
+
+- **backend/** - 后端应用（待开发）
+  - 负责业务逻辑和数据处理
+  - 提供 RESTful API 或 GraphQL API
+  - 处理用户认证和授权
+  - 管理数据库和缓存
+
+### 部署架构
+
+前后端可以独立部署：
+
+1. **前端部署** - Vercel、Netlify 或 CDN
+2. **后端部署** - 云服务器、容器化部署或 Serverless
+3. **通信方式** - 通过 HTTP/HTTPS API 进行数据交互
+
+### 开发流程
+
+1. 前端开发团队专注于 `frontend/` 目录
+2. 后端开发团队专注于 `backend/` 目录
+3. 通过 API 契约进行协作
+4. 使用 TypeScript 接口定义确保类型安全
 
 ## 快速开始
 
@@ -152,12 +191,14 @@ zczk/
 ### 安装依赖
 
 ```bash
+cd frontend
 pnpm install
 ```
 
 ### 开发模式
 
 ```bash
+cd frontend
 pnpm dev
 ```
 
@@ -166,14 +207,16 @@ pnpm dev
 ### 生产构建
 
 ```bash
+cd frontend
 pnpm build
 ```
 
-构建产物将输出到 `.next/` 目录。
+构建产物将输出到 `frontend/.next/` 目录。
 
 ### 生产模式启动
 
 ```bash
+cd frontend
 pnpm start
 ```
 
@@ -182,6 +225,7 @@ pnpm start
 ### 代码检查
 
 ```bash
+cd frontend
 pnpm lint
 ```
 
@@ -244,7 +288,7 @@ pnpm lint
 
 ### Next.js 配置
 
-项目使用 Next.js 15 作为框架，配置文件为 `next.config.ts`：
+项目使用 Next.js 15 作为框架，配置文件为 `frontend/next.config.ts`：
 
 - 支持 React 18.3.1
 - 启用 React 严格模式
@@ -255,16 +299,16 @@ pnpm lint
 
 ### TypeScript 配置
 
-配置文件为 `tsconfig.json`：
+配置文件为 `frontend/tsconfig.json`：
 
 - 严格模式启用
-- 路径别名 `@` 指向项目根目录
+- 路径别名 `@` 指向 `frontend/` 目录
 - 支持 Next.js 插件
 - 目标 ES2017
 
 ### Tailwind CSS 配置
 
-使用 Tailwind CSS v4，通过 `@tailwindcss/postcss` 插件自动配置。全局样式定义在 `app/globals.css` 中：
+使用 Tailwind CSS v4，通过 `@tailwindcss/postcss` 插件自动配置。全局样式定义在 `frontend/app/globals.css` 中：
 
 - CSS 变量定义主题颜色
 - 支持亮色/暗色主题切换
@@ -273,35 +317,35 @@ pnpm lint
 
 ### PostCSS 配置
 
-Tailwind CSS v4 自动处理所有必需的 PostCSS 插件，无需额外配置。
+Tailwind CSS v4 自动处理所有必需的 PostCSS 插件，无需额外配置。配置文件位于 `frontend/postcss.config.mjs`。
 
 ## 常见问题解答
 
 ### 如何添加新的产品？
 
-1. 在 `content/products.ts` 中添加产品数据
-2. 在 `types/product.ts` 中确保类型定义正确
-3. 在 `app/products/[slug]/page.tsx` 中会自动渲染产品详情页
+1. 在 `frontend/content/products.ts` 中添加产品数据
+2. 在 `frontend/types/product.ts` 中确保类型定义正确
+3. 在 `frontend/app/products/[slug]/page.tsx` 中会自动渲染产品详情页
 
 ### 如何修改主题颜色？
 
-主题颜色在 `app/globals.css` 中通过 CSS 变量定义：
+主题颜色在 `frontend/app/globals.css` 中通过 CSS 变量定义：
 - `--zczk-blue` - 品牌蓝色
 - `--zczk-gold` - 品牌金色
 
 ### 如何添加新的页面？
 
-在 `app/` 目录下创建新的文件夹和 `page.tsx` 文件，Next.js 会自动创建对应的路由。
+在 `frontend/app/` 目录下创建新的文件夹和 `page.tsx` 文件，Next.js 会自动创建对应的路由。
 
 ### 如何配置 SEO？
 
-在各个页面的 `page.tsx` 中导出 `metadata` 对象，或使用 `generateMetadata` 函数动态生成元数据。
+在各个页面的 `frontend/app/*/page.tsx` 中导出 `metadata` 对象，或使用 `generateMetadata` 函数动态生成元数据。
 
 ### 如何部署到生产环境？
 
-1. 运行 `pnpm build` 构建项目
-2. 将 `.next/` 目录和 `public/` 目录部署到服务器
-3. 运行 `pnpm start` 启动生产服务器
+1. 运行 `cd frontend && pnpm build` 构建项目
+2. 将 `frontend/.next/` 目录和 `frontend/public/` 目录部署到服务器
+3. 运行 `cd frontend && pnpm start` 启动生产服务器
 
 或使用 Vercel、Netlify 等平台进行一键部署。
 
