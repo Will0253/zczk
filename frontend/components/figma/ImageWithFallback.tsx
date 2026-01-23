@@ -15,6 +15,7 @@ interface ImageWithFallbackProps {
   width?: number
   height?: number
   priority?: boolean
+  sizes?: string
 }
 
 export function ImageWithFallback({
@@ -48,22 +49,19 @@ export function ImageWithFallback({
     )
   }
 
-  // 对于外部URL，使用 unoptimized 或 img 标签
-  const isExternal = src.startsWith('http://') || src.startsWith('https://')
+  const isDataUrl = src.startsWith('data:') || src.startsWith('blob:')
 
-  if (isExternal) {
+  if (isDataUrl) {
     return (
-      <Image
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
         src={src}
         alt={alt}
-        className={className}
+        className={`${fill ? 'absolute inset-0 w-full h-full' : ''} ${className ?? ''}`.trim()}
         style={style}
-        fill={fill}
         width={fill ? undefined : width || 800}
         height={fill ? undefined : height || 600}
         onError={handleError}
-        priority={priority}
-        unoptimized
         {...rest}
       />
     )

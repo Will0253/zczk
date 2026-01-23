@@ -11,19 +11,20 @@
 - **Turbopack** - 高性能开发服务器（通过 `--turbopack` 启用）
 
 ### 样式与 UI
-- **Tailwind CSS 4.1.0** - 原子化 CSS 框架
+- **Tailwind CSS 4.1.0** - 原子化 CSS 框架（通过 @tailwindcss/postcss 插件）
 - **Radix UI** - 无障碍组件库
   - Accordion, Alert Dialog, Avatar, Checkbox, Dialog
   - Dropdown Menu, Hover Card, Label, Menubar
   - Navigation Menu, Popover, Progress, Radio Group
   - Scroll Area, Select, Separator, Slider, Switch
-  - Tabs, Toggle, Tooltip, Context Menu, Collapsible 等
+  - Tabs, Toggle, Tooltip, Context Menu, Collapsible, Aspect Ratio 等
 - **MUI (Material UI) 7.3.5** - Material Design 组件库
   - @mui/material
   - @mui/icons-material
 - **Motion (Framer Motion) 12.23.24** - 动画库
 - **Lucide React 0.487.0** - 图标库
 - **next-themes 0.4.6** - 主题切换
+- **Emotion 11.14.x** - CSS-in-JS 库（MUI 依赖）
 
 ### 功能库
 - **date-fns 3.6.0** - 日期处理
@@ -38,6 +39,10 @@
 - **react-day-picker 8.10.1** - 日期选择器
 - **react-resizable-panels 2.1.7** - 可调整面板
 - **react-responsive-masonry 2.7.1** - 响应式瀑布流
+- **react-router-dom 7.11.0** - 客户端路由
+- **input-otp 1.4.2** - OTP 输入组件
+- **react-popper 2.3.0** - Popover 定位
+- **@popperjs/core 2.11.8** - Popper.js 核心库
 
 ### 工具库
 - **clsx 2.1.1** - 条件类名
@@ -46,13 +51,23 @@
 - **tw-animate-css 1.3.8** - Tailwind 动画扩展
 
 ### 包管理器
-- **pnpm** - 快速、节省磁盘空间的包管理器
+- **pnpm** - 快速、节省磁盘空间的包管理器（前端）
+- **npm** - Node.js 包管理器（后端）
+
+### 后端技术栈
+- **Strapi 5.33.4** - 开源无头 CMS
+  - @strapi/plugin-cloud - 云服务插件
+  - @strapi/plugin-users-permissions - 用户权限插件
+- **better-sqlite3 12.4.1** - SQLite 数据库驱动
+- **React 18.x** - Admin UI 框架
+- **styled-components 6.x** - CSS-in-JS 样式库
+- **TypeScript 5.x** - 类型安全
 
 ## 项目结构
 
 ```
 zczk/
-├── frontend/                     # 前端应用目录
+├── frontend/                     # 前端应用目录（Next.js 15）
 │   ├── app/                     # Next.js App Router 目录
 │   │   ├── about/               # 关于我们页面
 │   │   │   └── page.tsx
@@ -60,12 +75,16 @@ zczk/
 │   │   │   └── page.tsx
 │   │   ├── news/                # 新闻资讯
 │   │   │   ├── page.tsx        # 新闻列表页
-│   │   │   └── [slug]/        # 动态路由
-│   │   │       └── page.tsx   # 新闻详情页
+│   │   │   ├── [slug]/        # 动态路由
+│   │   │   │   ├── page.tsx   # 新闻详情页
+│   │   │   │   ├── error.tsx   # 错误页面
+│   │   │   │   └── loading.tsx # 加载状态
+│   │   │   ├── error.tsx       # 列表错误页
+│   │   │   └── loading.tsx     # 列表加载状态
 │   │   ├── products/            # 产品中心
 │   │   │   ├── page.tsx        # 产品列表页
-│   │   │   └── [slug]/        # 动态路由
-│   │   │       └── page.tsx   # 产品详情页
+│   │   │   ├── error.tsx       # 错误页面
+│   │   │   └── loading.tsx     # 加载状态
 │   │   ├── solutions/           # 解决方案
 │   │   │   ├── page.tsx       # 解决方案列表页
 │   │   │   └── [slug]/       # 动态路由
@@ -104,7 +123,8 @@ zczk/
 │   │   │   ├── ContactCard.tsx      # 联系卡片
 │   │   │   ├── Products.tsx         # 产品中心
 │   │   │   ├── Solutions.tsx        # 解决方案
-│   │   │   └── News.tsx             # 资讯中心
+│   │   │   ├── News.tsx             # 资讯中心
+│   │   │   └── Mermaid.tsx          # Mermaid 图表
 │   │   └── ui/                  # UI 基础组件（基于 Radix UI）
 │   │       ├── button.tsx
 │   │       └── card.tsx
@@ -116,8 +136,10 @@ zczk/
 │   │   ├── site-config.ts     # 网站配置
 │   │   └── solutions.ts       # 解决方案数据
 │   ├── lib/                    # 工具函数目录
+│   │   ├── categories.ts      # 分类工具
 │   │   ├── cn.ts             # 类名合并工具
-│   │   └── metadata.ts       # 元数据工具
+│   │   ├── metadata.ts       # 元数据工具
+│   │   └── strapi.ts         # Strapi API 客户端
 │   ├── public/                 # 静态资源目录
 │   │   └── images/            # 图片资源
 │   ├── types/                  # TypeScript 类型定义
@@ -126,6 +148,8 @@ zczk/
 │   │   ├── news.ts
 │   │   ├── product.ts
 │   │   └── solution.ts
+│   ├── .env.example           # 环境变量示例
+│   ├── .eslintignore          # ESLint 忽略配置
 │   ├── .eslintrc.json         # ESLint 配置
 │   ├── .gitignore             # Git 忽略文件
 │   ├── next.config.ts         # Next.js 配置
@@ -133,8 +157,57 @@ zczk/
 │   ├── pnpm-lock.yaml         # pnpm 锁文件
 │   ├── postcss.config.mjs     # PostCSS 配置
 │   └── tsconfig.json         # TypeScript 配置
+├── backend/                    # 后端应用目录（Strapi 5）
+│   ├── config/                # Strapi 配置
+│   │   ├── admin.ts          # Admin UI 配置
+│   │   ├── api.ts            # API 配置
+│   │   ├── database.ts       # 数据库配置
+│   │   ├── middlewares.ts    # 中间件配置
+│   │   ├── plugins.ts        # 插件配置
+│   │   └── server.ts         # 服务器配置
+│   ├── database/              # 数据库目录
+│   │   └── migrations/       # 数据库迁移
+│   ├── public/                # 公共资源
+│   │   ├── uploads/          # 上传文件
+│   │   └── robots.txt        # SEO robots.txt
+│   ├── scripts/               # 导入脚本
+│   │   ├── import-news.mjs   # 导入新闻数据
+│   │   ├── import-products.mjs # 导入产品数据
+│   │   └── parse-content.mjs # 解析内容文件
+│   ├── src/                   # 源代码目录
+│   │   ├── admin/            # Admin UI
+│   │   ├── api/              # API 端点
+│   │   │   ├── news-item/    # 新闻 API
+│   │   │   │   ├── content-types/
+│   │   │   │   ├── controllers/
+│   │   │   │   ├── routes/
+│   │   │   │   └── services/
+│   │   │   └── product/      # 产品 API
+│   │   │       ├── content-types/
+│   │   │       ├── controllers/
+│   │   │       ├── routes/
+│   │   │       └── services/
+│   │   ├── extensions/       # Strapi 扩展
+│   │   └── index.ts          # 入口文件
+│   ├── types/                 # TypeScript 类型
+│   │   └── generated/        # 自动生成类型
+│   ├── .env                  # 环境变量（不提交）
+│   ├── .env.example          # 环境变量示例
+│   ├── .gitignore            # Git 忽略文件
+│   ├── package.json          # 项目配置
+│   ├── package-lock.json     # npm 锁文件
+│   ├── tsconfig.json         # TypeScript 配置
+│   └── README.md             # 后端说明文档
 ├── specs/                     # 规格文档目录
-│   └── 001-nextjs-migration/  # Next.js 迁移规格
+│   ├── 001-nextjs-migration/  # Next.js 迁移规格
+│   │   ├── spec.md
+│   │   ├── plan.md
+│   │   ├── tasks.md
+│   │   ├── research.md
+│   │   ├── data-model.md
+│   │   ├── contracts/
+│   │   └── checklists/
+│   └── 001-strapi-backend-cms/ # Strapi 后端规格
 │       ├── spec.md
 │       ├── plan.md
 │       ├── tasks.md
@@ -142,11 +215,15 @@ zczk/
 │       ├── data-model.md
 │       ├── contracts/
 │       └── checklists/
-├── .qoder/                   # Qoder 配置
-├── .specify/                 # Specify 配置
-├── .gitignore                # 根目录 Git 忽略文件
-├── README.md                 # 项目说明文档
-└── QODER.md                 # Qoder 文档
+├── .github/                   # GitHub 配置
+│   ├── agents/               # AI Agents 配置
+│   └── prompts/              # AI Prompts
+├── .qoder/                    # Qoder 配置
+├── .specify/                  # Specify 配置
+├── .gitignore                 # 根目录 Git 忽略文件
+├── README.md                  # 项目说明文档
+├── QODER.md                   # Qoder 文档
+└── package.json               # 根目录配置
 ```
 
 ## 架构说明
@@ -160,20 +237,64 @@ zczk/
   - 使用 Next.js App Router 进行页面路由
   - 支持服务端渲染（SSR）和静态生成（SSG）
   - 提供丰富的动画和交互体验
+  - 通过 `lib/strapi.ts` 与后端 Strapi CMS 进行数据交互
 
-- **backend/** - 后端应用（待开发）
-  - 负责业务逻辑和数据处理
-  - 提供 RESTful API 或 GraphQL API
-  - 处理用户认证和授权
-  - 管理数据库和缓存
+- **backend/** - 后端应用（Strapi 5 CMS）
+  - 基于 Strapi 5.33.4 的无头 CMS
+  - 提供 RESTful API 管理产品和新闻内容
+  - 使用 SQLite 数据库（可配置其他数据库）
+  - 包含 Admin UI 用于内容管理
+  - 支持用户权限管理（@strapi/plugin-users-permissions）
+
+### 数据流架构
+
+```
+┌─────────────┐     API      ┌─────────────┐     Database     ┌─────────────┐
+│   Frontend  │ ◄──────────► │   Strapi    │ ◄──────────────► │   SQLite    │
+│ (Next.js)   │   HTTP/HTTPS │   CMS 5     │                  │   (better-  │
+│             │              │             │                  │  sqlite3)   │
+└─────────────┘              └─────────────┘                  └─────────────┘
+       │                              │
+       │                              │
+       ▼                              ▼
+  Static Content                Admin UI
+  (content/*.ts)              (localhost:1337/admin)
+```
+
+### 内容管理策略
+
+项目支持两种内容管理模式：
+
+1. **静态内容模式**（默认）
+   - 内容存储在 `frontend/content/` 目录
+   - 类型安全的数据结构
+   - 适合快速开发和静态内容
+
+2. **动态内容模式**（Strapi CMS）
+   - 内容存储在 Strapi 数据库
+   - 通过 `NEXT_PUBLIC_STRAPI_URL` 环境变量配置
+   - 支持内容导入脚本：
+     - `npm run import:products` - 导入产品数据
+     - `npm run import:news` - 导入新闻数据
+     - `npm run import:content` - 导入所有内容
 
 ### 部署架构
 
 前后端可以独立部署：
 
 1. **前端部署** - Vercel、Netlify 或 CDN
+   - 构建命令：`pnpm build`
+   - 启动命令：`pnpm start`
+   - 端口：3000（默认）
+
 2. **后端部署** - 云服务器、容器化部署或 Serverless
+   - 构建命令：`npm run build`
+   - 启动命令：`npm run start`
+   - 端口：1337（默认）
+
 3. **通信方式** - 通过 HTTP/HTTPS API 进行数据交互
+   - 前端通过 `NEXT_PUBLIC_STRAPI_URL` 指向后端 API
+   - 支持跨域配置（localhost、127.0.0.1、192.168.0.2）
 
 ### 开发流程
 
@@ -185,39 +306,93 @@ zczk/
 ## 快速开始
 
 ### 前置要求
-- Node.js >= 18.0.0
-- pnpm >= 8.0.0
+- Node.js >= 20.0.0 <= 24.x.x
+- pnpm >= 8.0.0 (前端)
+- npm >= 6.0.0 (后端)
 
 ### 安装依赖
 
 ```bash
 cd frontend
 pnpm install
+
+cd ../backend
+npm install
+```
+
+### 环境配置
+
+**前端配置**（可选，使用 Strapi CMS 时需要）：
+```bash
+cd frontend
+cp .env.example .env
+# 编辑 .env 文件，设置 NEXT_PUBLIC_STRAPI_URL
+```
+
+**后端配置**：
+```bash
+cd backend
+cp .env.example .env
+# 编辑 .env 文件，设置数据库和密钥
 ```
 
 ### 开发模式
 
 ```bash
+# 终端 1：启动后端 Strapi CMS
+cd backend
+npm run develop
+
+# 终端 2：启动前端 Next.js 应用
 cd frontend
 pnpm dev
 ```
 
-开发服务器将在 `http://localhost:3000` 启动（使用 Turbopack 加速）。
+- 前端开发服务器将在 `http://localhost:3000` 启动（使用 Turbopack 加速）
+- Strapi 管理后台默认在 `http://localhost:1337/admin`
+- Strapi API 端点在 `http://localhost:1337/api`
+
+### 内容导入（可选）
+
+如果使用 Strapi CMS，可以导入现有的静态内容：
+
+```bash
+cd backend
+# 设置环境变量
+export STRAPI_URL="http://localhost:1337"
+export STRAPI_TOKEN="<从 Admin UI 获取的 JWT Token>"
+
+# 导入产品数据
+npm run import:products
+
+# 导入新闻数据
+npm run import:news
+
+# 导入所有内容
+npm run import:content
+```
 
 ### 生产构建
 
 ```bash
 cd frontend
 pnpm build
+
+cd ../backend
+npm run build
 ```
 
-构建产物将输出到 `frontend/.next/` 目录。
+- 前端构建产物将输出到 `frontend/.next/` 目录
+- 后端构建产物将输出到 `backend/.tmp/` 和 `backend/dist/` 目录
 
 ### 生产模式启动
 
 ```bash
 cd frontend
 pnpm start
+
+cd ../backend
+npm start
 ```
 
 启动生产服务器，预览构建后的应用。
@@ -233,25 +408,47 @@ pnpm lint
 
 ## 页面路由
 
+### 前端路由（Next.js App Router）
 - `/` - 首页
 - `/about` - 关于我们
 - `/products` - 产品中心
-- `/products/smart-cone` - 智能锥桶产品详情
 - `/solutions` - 解决方案
 - `/solutions/highway-safety` - 高速公路安全解决方案详情
 - `/news` - 新闻资讯
-- `/news/5g-smart-cone` - 5G 智能锥桶新闻详情
+- `/news/[slug]` - 新闻详情页（动态路由）
 - `/contact` - 联系我们
+
+### 后端 API 路由（Strapi）
+- `/api/products` - 产品列表 API
+- `/api/products/:id` - 产品详情 API
+- `/api/news` - 新闻列表 API
+- `/api/news/:id` - 新闻详情 API
+- `/admin` - Strapi 管理后台
+
+### Strapi 权限配置
+
+**公开访问（Public Role）**：
+- `Product` - `find`、`findOne`
+- `News` - `find`、`findOne`
+
+**认证访问（Authenticated Role）**：
+- `Product` - `create`、`update`、`delete`
+- `News` - `create`、`update`、`delete`
+
+配置路径：Admin UI → Settings → Users & Permissions → Roles
 
 ## 功能特性
 
-### 架构特性
+### 功能特性
+
+#### 前端特性
 - **Next.js 15 App Router** - 基于文件系统的路由，支持服务端组件和客户端组件
 - **混合渲染模式** - 静态生成（SSG）、服务端渲染（SSR）和客户端渲染（CSR）结合
 - **Turbopack 开发服务器** - 极速的开发体验和热更新
 - **TypeScript 全栈支持** - 类型安全的开发体验
+- **Strapi API 集成** - 通过 `lib/strapi.ts` 与后端 CMS 通信
 
-### UI/UX 特性
+#### UI/UX 特性
 - 现代化的响应式设计
 - 基于 Tailwind CSS 的原子化样式
 - 丰富的动画效果（Motion/Framer Motion）
@@ -261,7 +458,7 @@ pnpm lint
 - 滚动进度条指示器
 - 响应式导航栏（桌面端和移动端）
 
-### 功能特性
+#### 功能特性
 - 动态路由支持（产品、新闻、解决方案详情页）
 - SEO 优化（元数据、Open Graph、Twitter Cards）
 - 图片优化（Next.js Image 组件）
@@ -273,31 +470,54 @@ pnpm lint
 - 命令面板（cmdk）
 - 日期选择器（react-day-picker）
 
-### 内容管理
+#### 后端特性（Strapi CMS）
+- **无头 CMS 架构** - 提供 RESTful API
+- **内容管理** - 产品和新闻的增删改查
+- **用户权限管理** - 基于角色的访问控制（RBAC）
+- **媒体管理** - 图片和文件上传
+- **Admin UI** - 可视化内容管理界面
+- **内容导入** - 支持从静态内容文件导入数据
+- **数据库迁移** - 结构化的数据库变更管理
+- **API 端点** - 自定义 API 控制器和服务
+
+#### 内容管理
 - 集中式内容配置（content/ 目录）
 - 类型安全的内容数据（TypeScript）
 - 可扩展的内容结构
+- 支持静态内容和动态 CMS 内容两种模式
 
-### 开发体验
+#### 开发体验
 - ESLint 代码检查
 - 路径别名支持（@/）
 - 模块化的组件架构
 - 清晰的项目结构
+- TypeScript 类型自动生成（Strapi）
 
 ## 配置说明
 
-### Next.js 配置
+### 前端配置（Next.js）
+
+#### Next.js 配置
 
 项目使用 Next.js 15 作为框架，配置文件为 `frontend/next.config.ts`：
 
 - 支持 React 18.3.1
 - 启用 React 严格模式
 - 图片优化配置：
-  - 远程域名白名单（images.unsplash.com）
+  - 远程域名白名单（images.unsplash.com、localhost:1337、127.0.0.1:1337、192.168.0.2:1337）
   - 现代图片格式支持（AVIF、WebP）
-  - 响应式图片尺寸配置
+  - 响应式图片尺寸配置（640, 750, 828, 1080, 1200, 1920, 2048, 3840）
 
-### TypeScript 配置
+#### 环境变量
+
+前端环境变量配置文件为 `frontend/.env`：
+
+```bash
+# Strapi CMS API 地址（可选，使用动态内容时需要）
+NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
+```
+
+#### TypeScript 配置
 
 配置文件为 `frontend/tsconfig.json`：
 
@@ -305,8 +525,9 @@ pnpm lint
 - 路径别名 `@` 指向 `frontend/` 目录
 - 支持 Next.js 插件
 - 目标 ES2017
+- 模块解析方式：bundler
 
-### Tailwind CSS 配置
+#### Tailwind CSS 配置
 
 使用 Tailwind CSS v4，通过 `@tailwindcss/postcss` 插件自动配置。全局样式定义在 `frontend/app/globals.css` 中：
 
@@ -314,40 +535,276 @@ pnpm lint
 - 支持亮色/暗色主题切换
 - 品牌色彩：`--zczk-blue: #11345b`、`--zczk-gold: #fdbd00`
 - 技术风格渐变和网格背景
+- 使用 `@import "tailwindcss"` 导入 Tailwind
 
-### PostCSS 配置
+#### PostCSS 配置
 
 Tailwind CSS v4 自动处理所有必需的 PostCSS 插件，无需额外配置。配置文件位于 `frontend/postcss.config.mjs`。
 
+#### Strapi API 客户端
+
+Strapi API 客户端位于 `frontend/lib/strapi.ts`，提供以下功能：
+
+- `getProducts()` - 获取产品列表
+- `getFeaturedProducts(limit)` - 获取精选产品
+- `getNewsList()` - 获取新闻列表
+- `getFeaturedNews(limit)` - 获取精选新闻
+- `getNewsBySlug(slug)` - 根据 slug 获取新闻详情
+- `getAllNewsSlugs()` - 获取所有新闻 slug
+
+### 后端配置（Strapi）
+
+#### 环境变量
+
+后端环境变量配置文件为 `backend/.env`：
+
+```bash
+# 服务器配置
+HOST=0.0.0.0
+PORT=1337
+
+# 数据库配置
+DATABASE_CLIENT=sqlite
+DATABASE_FILENAME=.tmp/data.db
+
+# 安全密钥（生产环境必须修改）
+APP_KEYS="toBeModified1,toBeModified2"
+API_TOKEN_SALT=tobemodified
+ADMIN_JWT_SECRET=tobemodified
+TRANSFER_TOKEN_SALT=tobemodified
+JWT_SECRET=tobemodified
+ENCRYPTION_KEY=tobemodified
+
+# 代理配置（可选，网络异常时使用）
+# HTTP_PROXY=http://192.168.0.2:7897
+# HTTPS_PROXY=http://192.168.0.2:7897
+```
+
+#### TypeScript 配置
+
+配置文件为 `backend/tsconfig.json`：
+
+- TypeScript 5.x
+- 严格模式
+- 目标 ES2020
+- 自动生成类型（types/generated/）
+
+#### 数据库配置
+
+默认使用 SQLite 数据库，配置文件为 `backend/config/database.ts`：
+
+- 数据库文件：`.tmp/data.db`
+- 支持迁移系统
+- 可配置其他数据库（PostgreSQL、MySQL 等）
+
+#### API 配置
+
+API 配置文件为 `backend/config/api.ts`：
+
+- REST API 端点
+- 响应时间限制
+- 跨域配置
+
+#### 权限配置
+
+权限配置通过 Admin UI 管理：
+
+1. 访问 `http://localhost:1337/admin`
+2. 登录后进入 Settings → Users & Permissions → Roles
+3. 配置 Public 和 Authenticated 角色的权限
+
+**公开访问（Public）**：
+- Product: find, findOne
+- News: find, findOne
+
+**认证访问（Authenticated）**：
+- Product: create, update, delete
+- News: create, update, delete
+
 ## 常见问题解答
 
-### 如何添加新的产品？
+### 前端相关
 
-1. 在 `frontend/content/products.ts` 中添加产品数据
-2. 在 `frontend/types/product.ts` 中确保类型定义正确
-3. 在 `frontend/app/products/[slug]/page.tsx` 中会自动渲染产品详情页
+#### 如何添加新的产品？
 
-### 如何修改主题颜色？
+1. **静态内容模式**：
+   - 在 `frontend/content/products.ts` 中添加产品数据
+   - 在 `frontend/types/product.ts` 中确保类型定义正确
+   - 产品会自动显示在产品中心页面
+
+2. **动态内容模式（Strapi CMS）**：
+   - 登录 Strapi Admin UI (`http://localhost:1337/admin`)
+   - 进入 Content Manager → Product Collection
+   - 点击 "Create new entry" 添加产品
+   - 填写产品信息并上传图片
+   - 点击 "Save" 发布
+
+#### 如何添加新的新闻？
+
+1. **静态内容模式**：
+   - 在 `frontend/content/news.ts` 中添加新闻数据
+   - 在 `frontend/types/news.ts` 中确保类型定义正确
+   - 新闻会自动显示在资讯中心页面
+
+2. **动态内容模式（Strapi CMS）**：
+   - 登录 Strapi Admin UI
+   - 进入 Content Manager → News Collection
+   - 点击 "Create new entry" 添加新闻
+   - 填写新闻信息并上传图片
+   - 点击 "Save" 发布
+
+#### 如何修改主题颜色？
 
 主题颜色在 `frontend/app/globals.css` 中通过 CSS 变量定义：
 - `--zczk-blue` - 品牌蓝色
 - `--zczk-gold` - 品牌金色
 
-### 如何添加新的页面？
+#### 如何添加新的页面？
 
 在 `frontend/app/` 目录下创建新的文件夹和 `page.tsx` 文件，Next.js 会自动创建对应的路由。
 
-### 如何配置 SEO？
+例如，创建 `/services` 页面：
+```
+frontend/app/
+└── services/
+    └── page.tsx
+```
+
+#### 如何配置 SEO？
 
 在各个页面的 `frontend/app/*/page.tsx` 中导出 `metadata` 对象，或使用 `generateMetadata` 函数动态生成元数据。
 
-### 如何部署到生产环境？
+示例：
+```typescript
+export const metadata: Metadata = {
+  title: '页面标题',
+  description: '页面描述',
+  openGraph: {
+    title: '页面标题',
+    description: '页面描述',
+    images: ['/images/og-image.jpg'],
+  },
+}
+```
 
+### 后端相关
+
+#### 如何配置数据库？
+
+默认使用 SQLite，配置文件为 `backend/.env`：
+
+```bash
+DATABASE_CLIENT=sqlite
+DATABASE_FILENAME=.tmp/data.db
+```
+
+如需使用其他数据库（PostgreSQL、MySQL），修改 `DATABASE_CLIENT` 并添加相应的数据库连接配置。
+
+#### 如何重置数据库？
+
+删除数据库文件并重启 Strapi：
+
+```bash
+cd backend
+rm -f .tmp/data.db
+npm run develop
+```
+
+#### 如何备份和恢复数据？
+
+**备份数据库**：
+```bash
+cd backend
+cp .tmp/data.db .tmp/data.db.backup
+```
+
+**恢复数据库**：
+```bash
+cd backend
+cp .tmp/data.db.backup .tmp/data.db
+```
+
+**导出内容为 JSON**：
+```bash
+cd backend
+npm run strapi export
+```
+
+**导入内容**：
+```bash
+cd backend
+npm run strapi import <file>
+```
+
+#### 如何获取 API Token？
+
+1. 登录 Strapi Admin UI
+2. 进入 Settings → API Tokens
+3. 点击 "Create new API Token"
+4. 设置 Token 名称、描述和权限
+5. 复制生成的 Token
+
+### 部署相关
+
+#### 如何部署到生产环境？
+
+**前端部署**：
 1. 运行 `cd frontend && pnpm build` 构建项目
 2. 将 `frontend/.next/` 目录和 `frontend/public/` 目录部署到服务器
 3. 运行 `cd frontend && pnpm start` 启动生产服务器
 
+**后端部署**：
+1. 运行 `cd backend && npm run build` 构建项目
+2. 将 `backend/` 目录部署到服务器
+3. 设置生产环境变量（修改 `.env` 中的密钥）
+4. 运行 `cd backend && npm start` 启动生产服务器
+
 或使用 Vercel、Netlify 等平台进行一键部署。
+
+#### 如何配置 HTTPS？
+
+使用反向代理（如 Nginx）配置 HTTPS：
+
+```nginx
+server {
+    listen 443 ssl http2;
+    server_name your-domain.com;
+
+    ssl_certificate /path/to/cert.pem;
+    ssl_certificate_key /path/to/key.pem;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+### 开发相关
+
+#### 如何启用 Strapi 动态内容？
+
+1. 启动后端 Strapi CMS：`cd backend && npm run develop`
+2. 在 `frontend/.env` 中设置 `NEXT_PUBLIC_STRAPI_URL=http://localhost:1337`
+3. 修改前端页面代码，使用 `lib/strapi.ts` 中的 API 函数获取数据
+4. 重启前端开发服务器
+
+#### 如何导入现有内容到 Strapi？
+
+```bash
+cd backend
+export STRAPI_URL="http://localhost:1337"
+export STRAPI_TOKEN="<你的_API_TOKEN>"
+npm run import:content
+```
+
+#### 如何调试 API 问题？
+
+1. 检查 Strapi 日志：查看终端输出
+2. 使用浏览器开发者工具查看网络请求
+3. 检查权限配置：Admin UI → Settings → Users & Permissions
+4. 验证环境变量：`NEXT_PUBLIC_STRAPI_URL` 是否正确
 
 ## 浏览器支持
 
@@ -358,10 +815,33 @@ Tailwind CSS v4 自动处理所有必需的 PostCSS 插件，无需额外配置�
 
 ## 项目信息
 
-
-
 ### 项目状态
-本项目已完成从 React + Vite 到 Next.js 15 App Router 的迁移。迁移规格文档位于 `specs/001-nextjs-migration/` 目录。
+
+本项目已完成以下开发工作：
+
+1. **前端开发**（已完成）
+   - 从 React + Vite 迁移到 Next.js 15 App Router
+   - 实现完整的页面路由和组件架构
+   - 集成 Tailwind CSS v4 和 Radix UI 组件库
+   - 实现响应式设计和主题切换功能
+   - 完成产品中心、解决方案、资讯中心等核心页面
+
+2. **后端开发**（已完成）
+   - 基于 Strapi 5.33.4 搭建无头 CMS
+   - 实现产品和新闻的内容管理功能
+   - 配置用户权限和 API 访问控制
+   - 提供内容导入脚本
+
+3. **规格文档**
+   - Next.js 迁移规格：`specs/001-nextjs-migration/`
+   - Strapi 后端规格：`specs/001-strapi-backend-cms/`
+
+### 技术支持
+
+- **前端框架文档**：[Next.js 官方文档](https://nextjs.org/docs)
+- **后端 CMS 文档**：[Strapi 官方文档](https://docs.strapi.io)
+- **UI 组件文档**：[Radix UI](https://www.radix-ui.com)、[MUI](https://mui.com)
+- **样式框架文档**：[Tailwind CSS](https://tailwindcss.com)
 
 ### 许可证
 
@@ -370,3 +850,13 @@ MIT License
 ### 联系方式
 
 如有问题或建议，请联系项目维护者。
+
+---
+
+**公司信息**：
+- 公司名称：深圳市中创智控技术有限公司
+- 网站名称：中创智控
+- 品牌口号：智慧交通安全预警领航者
+- 联系电话：18823780560
+- 邮箱：huangyan@szzczk.com
+- 地址：深圳市龙华区民治街道民治大道与民新路交界处

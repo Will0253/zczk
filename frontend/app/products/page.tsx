@@ -1,34 +1,49 @@
 import { Metadata } from 'next'
 import { Products } from '@/components/sections/Products'
 import { siteConfig } from '@/content/site-config'
+import { buildProductCategories } from '@/lib/categories'
+import { getProducts } from '@/lib/strapi'
 
-export const metadata: Metadata = {
-  title: `产品中心 | ${siteConfig.name}`,
-  description: '汇集尖端智慧交通科技，从智能感知硬件到云端管理平台，为您提供全方位的安全预警解决方案。浏览智能预警路锥、AI布控球、声场预警系统等全线产品。',
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const products = await getProducts()
+  const hero = products[0]
+  const description = hero?.description || siteConfig.seo.defaultDescription
+  const image = hero?.image || siteConfig.seo.ogImage
+
+  return {
     title: `产品中心 | ${siteConfig.name}`,
-    description: '汇集尖端智慧交通科技，从智能感知硬件到云端管理平台，为您提供全方位的安全预警解决方案。',
-    url: `${siteConfig.seo.siteUrl}/products`,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.seo.ogImage,
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.name} 产品中心`,
-      },
-    ],
-    locale: 'zh_CN',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `产品中心 | ${siteConfig.name}`,
-    description: '汇集尖端智慧交通科技，从智能感知硬件到云端管理平台，为您提供全方位的安全预警解决方案。',
-    images: [siteConfig.seo.ogImage],
-  },
+    description,
+    openGraph: {
+      title: `产品中心 | ${siteConfig.name}`,
+      description,
+      url: `${siteConfig.seo.siteUrl}/products`,
+      siteName: siteConfig.name,
+      images: image
+        ? [
+            {
+              url: image,
+              width: 1200,
+              height: 630,
+              alt: `${siteConfig.name} 产品中心`,
+            },
+          ]
+        : [],
+      locale: 'zh_CN',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `产品中心 | ${siteConfig.name}`,
+      description,
+      images: image ? [image] : [],
+    },
+  }
 }
 
-export default function ProductsPage() {
-  return <Products />
+export default async function ProductsPage() {
+  const products = await getProducts()
+  const categories = buildProductCategories(products)
+
+  return <Products products={products} categories={categories} />
 }
+

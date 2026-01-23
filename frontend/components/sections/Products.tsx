@@ -5,14 +5,26 @@ import { Search, ChevronRight, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useState, useMemo } from 'react'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
-import { categories, getAllProducts } from '@/content/products'
-import type { ProductCategory } from '@/types/product'
+import type { Product, ProductCategory } from '@/types/product'
 
-export function Products() {
+interface ProductCategoryOption {
+  id: ProductCategory | 'all'
+  name: string
+  count: number
+}
+
+interface ProductsProps {
+  products: Product[]
+  categories: ProductCategoryOption[]
+}
+
+export function Products({ products, categories }: ProductsProps) {
   const [activeCategory, setActiveCategory] = useState<ProductCategory | 'all'>('all')
   const [searchQuery, setSearchQuery] = useState('')
   
-  const allProducts = getAllProducts()
+  const allProducts = useMemo(() => {
+    return [...products].sort((a, b) => a.order - b.order)
+  }, [products])
 
   const filteredProducts = useMemo(() => {
     return allProducts.filter(p => {

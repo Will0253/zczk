@@ -4,38 +4,16 @@ import Link from 'next/link'
 import { motion } from 'motion/react'
 import { Calendar, ArrowUpRight, ArrowRight } from 'lucide-react'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
+import type { NewsArticle, NewsCategory } from '@/types/news'
 
-const newsItems = [
-  {
-    id: 1,
-    title: 'ZCZ发布全新5G智能锥桶系统：重新定义高速公路智慧养护安全标准',
-    date: '2023-10-15',
-    summary: '集成最新V2X通信技术与高精度北斗定位模块，标志着安全管理进入数字化感知时代。',
-    image: '/images/products/smart-cone.jpg',
-    tag: '产品动态',
-    link: '/news/5g-smart-cone'
-  },
-  {
-    id: 2,
-    title: '智能声场预警系统迭代升级，高声压技术突破 148dB',
-    date: '2025-10-15',
-    summary: '500 米范围精准覆盖，雨天自动切换专属预警语音',
-    image: '/images/news/news-2.jpg',
-    tag: '技术迭代',
-    link: '/news/sound-field-upgrade'
-  },
-  {
-    id: 3,
-    title: '中创智控受邀参与智慧交通安全设备标准研讨',
-    date: '2025-09-30',
-    summary: '助力《"十四五"全国道路交通安全规划》落地实施',
-    image: '/images/news/news-3.jpg',
-    tag: '标准制定',
-    link: '/news/traffic-safety-standard'
-  }
-]
+interface NewsFeedProps {
+  newsItems: NewsArticle[]
+  categories: NewsCategory[]
+}
 
-export function NewsFeed() {
+export function NewsFeed({ newsItems, categories }: NewsFeedProps) {
+  const visibleNews = newsItems.slice(0, 3)
+
   return (
     <section className="py-24 px-4 bg-white relative overflow-hidden">
       {/* Tech Pattern Background (Consistency with ProductMatrix) */}
@@ -75,16 +53,19 @@ export function NewsFeed() {
 
         {/* News Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {newsItems.map((item, idx) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="group relative flex flex-col bg-white rounded-[40px] border border-gray-100 shadow-sm hover:shadow-3xl transition-all duration-500 overflow-hidden"
-            >
-              <Link href={item.link || '#'} className="absolute inset-0 z-20" />
+          {visibleNews.length === 0 ? (
+            <div className="col-span-full text-center py-16 text-gray-500">暂无资讯动态</div>
+          ) : (
+            visibleNews.map((item, idx) => (
+              <motion.div
+                key={item.slug}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group relative flex flex-col bg-white rounded-[40px] border border-gray-100 shadow-sm hover:shadow-3xl transition-all duration-500 overflow-hidden"
+              >
+              <Link href={`/news/${item.slug}`} className="absolute inset-0 z-20" />
               {/* Subtle Gradient Border on Hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#fdbd00]/10 via-transparent to-[#11345b]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -99,7 +80,7 @@ export function NewsFeed() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#11345b]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute top-6 left-6">
                   <span className="px-5 py-2 bg-[#fdbd00] text-[#11345b] text-[10px] font-black rounded-full shadow-xl">
-                    {item.tag}
+                    {categories.find((cat) => cat.id === item.category)?.name || item.category}
                   </span>
                 </div>
               </div>
@@ -108,7 +89,7 @@ export function NewsFeed() {
               <div className="p-10 flex flex-col flex-grow relative z-10">
                 <div className="flex items-center gap-2 text-xs font-bold text-gray-400 mb-6">
                   <Calendar className="w-4 h-4 text-[#fdbd00]" />
-                  {item.date}
+                  {item.publishedAt}
                 </div>
                 
                 <h3 className="text-xl font-bold text-[#11345b] mb-4 leading-tight group-hover:text-[#fdbd00] transition-colors duration-300 line-clamp-2">
@@ -131,8 +112,9 @@ export function NewsFeed() {
                 {/* Bottom Scaling Line (Consistency with ProductMatrix) */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#fdbd00] to-[#ffd700] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))
+          )}
         </div>
 
         {/* View All Button */}

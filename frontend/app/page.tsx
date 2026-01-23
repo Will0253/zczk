@@ -7,6 +7,8 @@ import { CaseStudies } from '@/components/sections/CaseStudies'
 import { Services } from '@/components/sections/Services'
 import { NewsFeed } from '@/components/sections/NewsFeed'
 import { siteConfig } from '@/content/site-config'
+import { buildNewsCategories } from '@/lib/categories'
+import { getFeaturedNews, getFeaturedProducts } from '@/lib/strapi'
 
 export const metadata: Metadata = {
   title: siteConfig.seo.defaultTitle,
@@ -35,7 +37,13 @@ export const metadata: Metadata = {
   },
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [featuredProducts, featuredNews] = await Promise.all([
+    getFeaturedProducts(6),
+    getFeaturedNews(3),
+  ])
+  const newsCategories = buildNewsCategories(featuredNews)
+
   return (
     <>
       {/* 首屏 Hero */}
@@ -45,7 +53,7 @@ export default function HomePage() {
       <BusinessScenarios />
       
       {/* 智能硬件集群 */}
-      <ProductMatrix />
+      <ProductMatrix products={featuredProducts} />
       
       {/* 技术实力与优势 */}
       <TechnicalStrength />
@@ -57,7 +65,7 @@ export default function HomePage() {
       <Services />
       
       {/* 资讯动态 */}
-      <NewsFeed />
+      <NewsFeed newsItems={featuredNews} categories={newsCategories} />
     </>
   )
 }

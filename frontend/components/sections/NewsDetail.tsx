@@ -3,17 +3,22 @@
 import { motion } from 'motion/react'
 import { Calendar, User, Eye, Search, ChevronRight, Share2, MessageCircle, ArrowLeft, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
-import { newsCategories, getAllNews, getRecentNews } from '@/content/news'
-import type { NewsArticle } from '@/types/news'
+import { Mermaid } from '@/components/sections/Mermaid'
+import type { NewsArticle, NewsCategory } from '@/types/news'
 
 interface NewsDetailProps {
   article: NewsArticle
+  allNews: NewsArticle[]
+  recentNews: NewsArticle[]
+  categories: NewsCategory[]
 }
 
-export function NewsDetail({ article }: NewsDetailProps) {
-  const allNews = getAllNews()
-  const recentNews = getRecentNews(4).filter(n => n.slug !== article.slug).slice(0, 4)
+export function NewsDetail({ article, allNews, recentNews, categories }: NewsDetailProps) {
+  const filteredRecent = recentNews.filter(n => n.slug !== article.slug).slice(0, 4)
   
   // 获取上一篇和下一篇
   const currentIndex = allNews.findIndex(n => n.slug === article.slug)
@@ -69,7 +74,7 @@ export function NewsDetail({ article }: NewsDetailProps) {
                 <div className="mb-8">
                   <div className="flex flex-wrap gap-3 mb-6">
                     <span className="px-4 py-1.5 bg-[#fdbd00] text-[#11345b] text-xs font-black rounded-full shadow-sm">
-                      {newsCategories.find(c => c.id === article.category)?.name || article.category}
+                      {categories.find(c => c.id === article.category)?.name || article.category}
                     </span>
                     {article.tags?.slice(0, 2).map(tag => (
                       <span key={tag} className="px-4 py-1.5 bg-gray-100 text-[#11345b] text-xs font-black rounded-full shadow-sm">
@@ -114,12 +119,54 @@ export function NewsDetail({ article }: NewsDetailProps) {
                   </p>
                   
                   {/* Content - 渲染 Markdown 内容 */}
-                  <div 
-                    className="space-y-6"
-                    dangerouslySetInnerHTML={{ 
-                      __html: renderMarkdown(article.content) 
-                    }} 
-                  />
+                  <div className="space-y-6">
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                      components={{
+                        img: ({ src, alt }) => (
+                          <ImageWithFallback
+                            src={normalizeUrl(src)}
+                            alt={alt ?? ''}
+                            width={1200}
+                            height={675}
+                            sizes="100vw"
+                            className="w-full h-auto rounded-2xl shadow-md"
+                          />
+                        ),
+                        code: ({ className, children }) => {
+                          const language = className?.replace('language-', '')
+                          if (language === 'mermaid') {
+                            return <Mermaid code={String(children)} />
+                          }
+                          return (
+                            <code className={className}>
+                              {children}
+                            </code>
+                          )
+                        },
+                        table: ({ children }) => (
+                          <div className="overflow-x-auto">
+                            <table className="w-full border-collapse text-sm">
+                              {children}
+                            </table>
+                          </div>
+                        ),
+                        th: ({ children }) => (
+                          <th className="border border-gray-200 bg-gray-50 px-3 py-2 text-left font-semibold text-gray-700">
+                            {children}
+                          </th>
+                        ),
+                        td: ({ children }) => (
+                          <td className="border border-gray-200 px-3 py-2 align-top text-gray-600">
+                            {children}
+                          </td>
+                        ),
+                      }}
+                    >
+                      {article.content || ''}
+                    </ReactMarkdown>
+                  </div>
                 </div>
 
                 {/* Footer Meta */}
@@ -208,7 +255,7 @@ export function NewsDetail({ article }: NewsDetailProps) {
                     资讯分类
                   </h4>
                   <div className="space-y-2">
-                    {newsCategories.filter(c => c.id !== 'all').map(cat => (
+                    {categories.filter(c => c.id !== 'all').map(cat => (
                       <Link 
                         key={cat.id} 
                         href={`/news?category=${cat.id}`}
@@ -231,7 +278,7 @@ export function NewsDetail({ article }: NewsDetailProps) {
                     推荐阅读
                   </h4>
                   <div className="space-y-6">
-                    {recentNews.map((news) => (
+                    {filteredRecent.map((news) => (
                       <Link key={news.slug} href={`/news/${news.slug}`} className="group block">
                         <h5 className="text-sm font-bold text-[#11345b] mb-2 group-hover:text-[#fdbd00] transition-colors line-clamp-2">
                           {news.title}
@@ -271,19 +318,15 @@ export function NewsDetail({ article }: NewsDetailProps) {
   )
 }
 
-// 简单的 Markdown 渲染函数
-function renderMarkdown(content: string): string {
-  return content
-    // 标题
-    .replace(/^### (.*$)/gm, '<h3 class="text-xl font-bold text-[#11345b] mt-8 mb-4">$1</h3>')
-    .replace(/^## (.*$)/gm, '<h2 class="text-2xl font-bold text-[#11345b] mt-10 mb-6">$1</h2>')
-    // 粗体
-    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-[#11345b]">$1</strong>')
-    // 列表
-    .replace(/^- (.*$)/gm, '<li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#fdbd00] mt-2 flex-shrink-0"></span><span>$1</span></li>')
-    .replace(/^(\d+)\. (.*$)/gm, '<li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full bg-[#11345b] text-white text-xs flex items-center justify-center flex-shrink-0">$1</span><span>$2</span></li>')
-    // 段落
-    .replace(/\n\n/g, '</p><p class="mb-4">')
-    // 换行
-    .replace(/\n/g, '<br />')
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+
+function normalizeUrl(url?: string | null) {
+  if (!url) return ''
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
+    return url
+  }
+  if (url.startsWith('/')) {
+    return `${STRAPI_URL}${url}`
+  }
+  return `${STRAPI_URL}/${url}`
 }
