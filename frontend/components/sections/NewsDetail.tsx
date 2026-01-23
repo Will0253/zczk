@@ -3,7 +3,11 @@
 import { motion } from 'motion/react'
 import { Calendar, User, Eye, Search, ChevronRight, Share2, MessageCircle, ArrowLeft, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
+import { Mermaid } from '@/components/sections/Mermaid'
 import type { NewsArticle, NewsCategory } from '@/types/news'
 
 interface NewsDetailProps {
@@ -115,12 +119,51 @@ export function NewsDetail({ article, allNews, recentNews, categories }: NewsDet
                   </p>
                   
                   {/* Content - 渲染 Markdown 内容 */}
-                  <div 
-                    className="space-y-6"
-                    dangerouslySetInnerHTML={{ 
-                      __html: renderMarkdown(article.content) 
-                    }} 
-                  />
+                  <div className="space-y-6">
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                      components={{
+                        img: ({ src, alt }) => (
+                          <img
+                            src={normalizeUrl(src)}
+                            alt={alt ?? ''}
+                            className="max-w-full rounded-2xl shadow-md"
+                          />
+                        ),
+                        code: ({ className, children }) => {
+                          const language = className?.replace('language-', '')
+                          if (language === 'mermaid') {
+                            return <Mermaid code={String(children)} />
+                          }
+                          return (
+                            <code className={className}>
+                              {children}
+                            </code>
+                          )
+                        },
+                        table: ({ children }) => (
+                          <div className="overflow-x-auto">
+                            <table className="w-full border-collapse text-sm">
+                              {children}
+                            </table>
+                          </div>
+                        ),
+                        th: ({ children }) => (
+                          <th className="border border-gray-200 bg-gray-50 px-3 py-2 text-left font-semibold text-gray-700">
+                            {children}
+                          </th>
+                        ),
+                        td: ({ children }) => (
+                          <td className="border border-gray-200 px-3 py-2 align-top text-gray-600">
+                            {children}
+                          </td>
+                        ),
+                      }}
+                    >
+                      {article.content || ''}
+                    </ReactMarkdown>
+                  </div>
                 </div>
 
                 {/* Footer Meta */}
@@ -272,19 +315,15 @@ export function NewsDetail({ article, allNews, recentNews, categories }: NewsDet
   )
 }
 
-// 简单的 Markdown 渲染函数
-function renderMarkdown(content: string): string {
-  return content
-    // 标题
-    .replace(/^### (.*$)/gm, '<h3 class="text-xl font-bold text-[#11345b] mt-8 mb-4">$1</h3>')
-    .replace(/^## (.*$)/gm, '<h2 class="text-2xl font-bold text-[#11345b] mt-10 mb-6">$1</h2>')
-    // 粗体
-    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-[#11345b]">$1</strong>')
-    // 列表
-    .replace(/^- (.*$)/gm, '<li class="flex gap-3 items-start"><span class="w-2 h-2 rounded-full bg-[#fdbd00] mt-2 flex-shrink-0"></span><span>$1</span></li>')
-    .replace(/^(\d+)\. (.*$)/gm, '<li class="flex gap-3 items-start"><span class="w-6 h-6 rounded-full bg-[#11345b] text-white text-xs flex items-center justify-center flex-shrink-0">$1</span><span>$2</span></li>')
-    // 段落
-    .replace(/\n\n/g, '</p><p class="mb-4">')
-    // 换行
-    .replace(/\n/g, '<br />')
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+
+function normalizeUrl(url?: string | null) {
+  if (!url) return ''
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
+    return url
+  }
+  if (url.startsWith('/')) {
+    return `${STRAPI_URL}${url}`
+  }
+  return `${STRAPI_URL}/${url}`
 }
