@@ -125,10 +125,13 @@ export function NewsDetail({ article, allNews, recentNews, categories }: NewsDet
                       rehypePlugins={[rehypeRaw]}
                       components={{
                         img: ({ src, alt }) => (
-                          <img
+                          <ImageWithFallback
                             src={normalizeUrl(src)}
                             alt={alt ?? ''}
-                            className="max-w-full rounded-2xl shadow-md"
+                            width={1200}
+                            height={675}
+                            sizes="100vw"
+                            className="w-full h-auto rounded-2xl shadow-md"
                           />
                         ),
                         code: ({ className, children }) => {

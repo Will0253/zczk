@@ -15,6 +15,7 @@ interface ImageWithFallbackProps {
   width?: number
   height?: number
   priority?: boolean
+  sizes?: string
 }
 
 export function ImageWithFallback({
@@ -48,10 +49,9 @@ export function ImageWithFallback({
     )
   }
 
-  // 对于外部URL，使用 img 标签以避免域名限制与加载问题
-  const isExternal = src.startsWith('http://') || src.startsWith('https://')
+  const isDataUrl = src.startsWith('data:') || src.startsWith('blob:')
 
-  if (isExternal) {
+  if (isDataUrl) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
