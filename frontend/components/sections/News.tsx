@@ -1,22 +1,26 @@
 'use client'
 
-import { Search, Calendar, Tag, Eye, ChevronLeft, ChevronRight, ArrowUpRight, Mail, Bell, Newspaper } from 'lucide-react'
+import { Search, Calendar, Tag, Eye, ChevronLeft, ChevronRight, ArrowUpRight, Mail, Newspaper } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
-import { newsCategories, getAllNews, getNewsByCategory, getFeaturedNews } from '@/content/news'
-import type { NewsArticle } from '@/types/news'
+import type { NewsArticle, NewsCategory } from '@/types/news'
 
-export function News() {
+interface NewsProps {
+  news: NewsArticle[]
+  featuredNews: NewsArticle[]
+  categories: NewsCategory[]
+}
+
+export function News({ news, featuredNews, categories }: NewsProps) {
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const allNews = getAllNews()
-  const featuredNews = getFeaturedNews()
+  const allNews = news
 
   const filteredNews = useMemo(() => {
-    let news = activeCategory === 'all' ? allNews : getNewsByCategory(activeCategory)
+    let news = activeCategory === 'all' ? allNews : allNews.filter(item => item.category === activeCategory)
     
     if (searchQuery) {
       const query = searchQuery.toLowerCase()
@@ -98,7 +102,7 @@ export function News() {
                   <h3 className="text-lg font-bold text-[#11345b]">分类浏览</h3>
                 </div>
                 <div className="p-4 space-y-1">
-                  {newsCategories.map((cat) => (
+                  {categories.map((cat) => (
                     <button
                       key={cat.id}
                       onClick={() => setActiveCategory(cat.id)}
@@ -174,7 +178,7 @@ export function News() {
                       </div>
                       <div className="flex items-center gap-2">
                         <Tag className="w-4 h-4 text-[#fdbd00]" />
-                        {newsCategories.find(c => c.id === featuredPost.category)?.name || featuredPost.category}
+                        {categories.find(c => c.id === featuredPost.category)?.name || featuredPost.category}
                       </div>
                     </div>
                     <h2 className="text-3xl lg:text-4xl font-bold text-[#11345b] mb-8 leading-tight group-hover:text-[#fdbd00] transition-colors duration-300">
@@ -196,7 +200,7 @@ export function News() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <AnimatePresence mode="popLayout">
                 {regularPosts.map((item, idx) => (
-                  <NewsCard key={item.slug} item={item} index={idx} />
+                  <NewsCard key={item.slug} item={item} index={idx} categories={categories} />
                 ))}
               </AnimatePresence>
             </div>
@@ -238,7 +242,7 @@ export function News() {
 }
 
 // 新闻卡片组件
-function NewsCard({ item, index }: { item: NewsArticle; index: number }) {
+function NewsCard({ item, index, categories }: { item: NewsArticle; index: number; categories: NewsCategory[] }) {
   return (
     <motion.div
       layout
@@ -257,7 +261,7 @@ function NewsCard({ item, index }: { item: NewsArticle; index: number }) {
           />
           <div className="absolute top-6 right-6">
             <span className="px-5 py-2 bg-white/90 backdrop-blur-md text-[#11345b] text-[10px] font-black rounded-full shadow-sm">
-              {newsCategories.find(c => c.id === item.category)?.name || item.category}
+              {categories.find(c => c.id === item.category)?.name || item.category}
             </span>
           </div>
         </div>

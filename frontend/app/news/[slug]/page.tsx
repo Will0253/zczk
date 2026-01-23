@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { NewsDetail } from '@/components/sections/NewsDetail'
-import { getNewsBySlug, getAllNewsSlugs } from '@/content/news'
 import { siteConfig } from '@/content/site-config'
+import { buildNewsCategories } from '@/lib/categories'
+import { getAllNewsSlugs, getNewsBySlug, getNewsList } from '@/lib/strapi'
 
 interface NewsDetailPageProps {
   params: Promise<{
@@ -12,7 +13,7 @@ interface NewsDetailPageProps {
 
 // 生成静态路由参数
 export async function generateStaticParams() {
-  const slugs = getAllNewsSlugs()
+  const slugs = await getAllNewsSlugs()
   return slugs.map((slug) => ({
     slug,
   }))
@@ -21,7 +22,7 @@ export async function generateStaticParams() {
 // 生成动态元数据
 export async function generateMetadata({ params }: NewsDetailPageProps): Promise<Metadata> {
   const { slug } = await params
-  const article = getNewsBySlug(slug)
+  const article = await getNewsBySlug(slug)
   
   if (!article) {
     return {
@@ -46,11 +47,24 @@ export async function generateMetadata({ params }: NewsDetailPageProps): Promise
 
 export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
   const { slug } = await params
-  const article = getNewsBySlug(slug)
+  const [article, allNews] = await Promise.all([
+    getNewsBySlug(slug),
+    getNewsList(),
+  ])
 
   if (!article) {
     notFound()
   }
 
-  return <NewsDetail article={article} />
+  const categories = buildNewsCategories(allNews)
+  const recentNews = allNews.slice(0, 4)
+
+  return (
+    <NewsDetail
+      article={article}
+      allNews={allNews}
+      recentNews={recentNews}
+      categories={categories}
+    />
+  )
 }

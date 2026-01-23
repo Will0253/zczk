@@ -48,22 +48,20 @@ export function ImageWithFallback({
     )
   }
 
-  // 对于外部URL，使用 unoptimized 或 img 标签
+  // 对于外部URL，使用 img 标签以避免域名限制与加载问题
   const isExternal = src.startsWith('http://') || src.startsWith('https://')
 
   if (isExternal) {
     return (
-      <Image
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
         src={src}
         alt={alt}
-        className={className}
+        className={`${fill ? 'absolute inset-0 w-full h-full' : ''} ${className ?? ''}`.trim()}
         style={style}
-        fill={fill}
         width={fill ? undefined : width || 800}
         height={fill ? undefined : height || 600}
         onError={handleError}
-        priority={priority}
-        unoptimized
         {...rest}
       />
     )

@@ -4,16 +4,17 @@ import { motion } from 'motion/react'
 import { Calendar, User, Eye, Search, ChevronRight, Share2, MessageCircle, ArrowLeft, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { ImageWithFallback } from '@/components/figma/ImageWithFallback'
-import { newsCategories, getAllNews, getRecentNews } from '@/content/news'
-import type { NewsArticle } from '@/types/news'
+import type { NewsArticle, NewsCategory } from '@/types/news'
 
 interface NewsDetailProps {
   article: NewsArticle
+  allNews: NewsArticle[]
+  recentNews: NewsArticle[]
+  categories: NewsCategory[]
 }
 
-export function NewsDetail({ article }: NewsDetailProps) {
-  const allNews = getAllNews()
-  const recentNews = getRecentNews(4).filter(n => n.slug !== article.slug).slice(0, 4)
+export function NewsDetail({ article, allNews, recentNews, categories }: NewsDetailProps) {
+  const filteredRecent = recentNews.filter(n => n.slug !== article.slug).slice(0, 4)
   
   // 获取上一篇和下一篇
   const currentIndex = allNews.findIndex(n => n.slug === article.slug)
@@ -69,7 +70,7 @@ export function NewsDetail({ article }: NewsDetailProps) {
                 <div className="mb-8">
                   <div className="flex flex-wrap gap-3 mb-6">
                     <span className="px-4 py-1.5 bg-[#fdbd00] text-[#11345b] text-xs font-black rounded-full shadow-sm">
-                      {newsCategories.find(c => c.id === article.category)?.name || article.category}
+                      {categories.find(c => c.id === article.category)?.name || article.category}
                     </span>
                     {article.tags?.slice(0, 2).map(tag => (
                       <span key={tag} className="px-4 py-1.5 bg-gray-100 text-[#11345b] text-xs font-black rounded-full shadow-sm">
@@ -208,7 +209,7 @@ export function NewsDetail({ article }: NewsDetailProps) {
                     资讯分类
                   </h4>
                   <div className="space-y-2">
-                    {newsCategories.filter(c => c.id !== 'all').map(cat => (
+                    {categories.filter(c => c.id !== 'all').map(cat => (
                       <Link 
                         key={cat.id} 
                         href={`/news?category=${cat.id}`}
@@ -231,7 +232,7 @@ export function NewsDetail({ article }: NewsDetailProps) {
                     推荐阅读
                   </h4>
                   <div className="space-y-6">
-                    {recentNews.map((news) => (
+                    {filteredRecent.map((news) => (
                       <Link key={news.slug} href={`/news/${news.slug}`} className="group block">
                         <h5 className="text-sm font-bold text-[#11345b] mb-2 group-hover:text-[#fdbd00] transition-colors line-clamp-2">
                           {news.title}

@@ -185,7 +185,7 @@ zczk/
 ## 快速开始
 
 ### 前置要求
-- Node.js >= 18.0.0
+- Node.js 24.x (Strapi 5 需要 <=24.x)
 - pnpm >= 8.0.0
 
 ### 安装依赖
@@ -193,6 +193,9 @@ zczk/
 ```bash
 cd frontend
 pnpm install
+
+cd ../backend
+npm install
 ```
 
 ### 开发模式
@@ -200,9 +203,14 @@ pnpm install
 ```bash
 cd frontend
 pnpm dev
+
+cd ../backend
+npm run develop
 ```
 
 开发服务器将在 `http://localhost:3000` 启动（使用 Turbopack 加速）。
+
+Strapi 管理后台默认在 `http://localhost:1337/admin`。
 
 ### 生产构建
 
@@ -227,6 +235,21 @@ pnpm start
 ```bash
 cd frontend
 pnpm lint
+
+## Strapi 与内容管理
+
+- 前端通过 `NEXT_PUBLIC_STRAPI_URL` 读取 Strapi 数据（示例见 frontend/.env.example）。
+- 后端默认使用 SQLite（见 backend/.env.example）。
+- 写入操作需要认证 Token；公开访问仅允许 `Product` 与 `News` 的 `find`/`findOne`。
+
+## 代理配置（网络异常时）
+
+如遇网络问题，请使用代理 `http://192.168.0.2:7897`：
+
+```bash
+export HTTP_PROXY="http://192.168.0.2:7897"
+export HTTPS_PROXY="http://192.168.0.2:7897"
+```
 ```
 
 运行 ESLint 进行代码质量检查。
