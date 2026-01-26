@@ -1,4 +1,5 @@
 ---
+type: project_command
 description: Generate a custom checklist for the current feature based on user requirements.
 ---
 
