@@ -1,13 +1,13 @@
-# Implementation Plan: 部署与运维规范化
+# Implementation Plan: 部署与运维手册
 
-**Branch**: `001-deployment-ops-specs` | **Date**: 2026-01-28 | **Spec**: [specs/001-deployment-ops-specs/spec.md](specs/001-deployment-ops-specs/spec.md)
-**Input**: Feature specification from `/specs/001-deployment-ops-specs/spec.md`
+**Branch**: `001-deployment-ops-manual` | **Date**: 2026-01-28 | **Spec**: [specs/001-deployment-ops-manual/spec.md](specs/001-deployment-ops-manual/spec.md)
+**Input**: Feature specification from `/specs/001-deployment-ops-manual/spec.md`
 
 **Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
 
 ## Summary
 
-基于现有部署与运维文档，形成覆盖生产部署、证书管理、配置分层、健康检查、日志管理、监控告警与备份恢复的完整实施方案，并提供对应的流程与契约。
+产出一份基于现有脚本与配置的部署与运维手册，覆盖首次部署、更新、回滚、备份、证书获取与续期流程，并附验证清单与引用路径。
 
 ## Technical Context
 
@@ -25,21 +25,20 @@
 **Project Type**: Web application（frontend + backend）  
 **Performance Goals**: 健康检查响应 < 3 秒；月可用性 ≥ 99.5%  
 **Constraints**: HTTPS 强制、HSTS、安全头、备份保留 7 天、回滚 < 5 分钟  
-**Scale/Scope**: 单站点生产部署 + 运维流程标准化
+**Scale/Scope**: 运维手册文档与流程规范化
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- HTTPS 强制与 HSTS：覆盖（部署与 Nginx 规范中明确）
-- 回滚机制：覆盖（部署流程包含回滚路径）
-- 监控告警：覆盖（监控指标与阈值已定义）
-- 备份与恢复：覆盖（备份策略与恢复流程已定义）
-- 安全要求（XSS/CSRF/依赖更新）：部署规范提醒与流程落地，不涉及代码实现改动
+- HTTPS 强制与 HSTS：手册明确要求并给出验证步骤
+- 回滚机制：手册包含回滚流程与验证
+- 监控告警：手册包含最小验证清单与排查指引
+- 备份与恢复：手册包含备份/恢复流程与演练要求
 
 结论：通过。无宪章冲突。
 
-**Post-Design Check**: 通过。现有方案持续满足 HTTPS 强制、回滚、监控告警与备份恢复要求。
+**Post-Design Check**: 通过。手册内容覆盖 HTTPS、回滚、备份与告警要求。
 
 ## Project Structure
 
@@ -78,12 +77,12 @@ frontend/
 ├── content/
 └── lib/
 
-specs/
+ops/
+  DEPLOYMENT-OPS-MANUAL.md
 DEPLOYMENT.md
-README.md
 ```
 
-**Structure Decision**: 采用 Web application 结构（frontend + backend），以仓库根目录的部署文档作为运维规范来源。
+**Structure Decision**: 采用 Web application 结构（frontend + backend），手册引用 ops/ 与 DEPLOYMENT.md 作为事实来源。
 
 ## Complexity Tracking
 

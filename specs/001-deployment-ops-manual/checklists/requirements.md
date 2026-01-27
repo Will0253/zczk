@@ -1,7 +1,7 @@
-# Specification Quality Checklist: 部署与运维规范化
+# Specification Quality Checklist: 部署与运维手册
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
-**Created**: 2026-01-27
+**Created**: 2026-01-28
 **Feature**: [spec.md](../spec.md)
 
 ## Content Quality
