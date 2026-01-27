@@ -1,0 +1,5 @@
+# 每天凌晨 2 点备份数据库
+0 2 * * * /bin/bash /usr/local/bin/backup.sh >> /var/log/backup.log 2>&1
+
+# 每天凌晨 2:30 清理过期备份（保留 7 天）
+30 2 * * * /bin/bash /usr/local/bin/retention.sh >> /var/log/retention.log 2>&1

@@ -1,0 +1,2 @@
+# 每天凌晨 3 点检查证书续期
+0 3 * * * /bin/sh /opt/certbot-renew.sh >> /var/log/certbot-renew.log 2>&1

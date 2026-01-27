@@ -1,0 +1,3 @@
+/backups/
+*.sql
+*.tar.gz

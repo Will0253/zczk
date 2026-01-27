@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ../..
+      dockerfile: ops/docker/Dockerfile.backend
+    env_file:
+      - ../.env.dev.example
+    command: ["npm", "run", "develop"]
+    ports:
+      - "1337:1337"
+    volumes:
+      - backend-tmp:/app/.tmp
+    networks:
+      - zczk-network
+
+  frontend:
+    build:
+      context: ../..
+      dockerfile: ops/docker/Dockerfile.frontend
+    env_file:
+      - ../.env.dev.example
+    command: ["pnpm", "dev", "--turbopack"]
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - zczk-network
+
+volumes:
+  backend-tmp:
+
+networks:
+  zczk-network:
+    driver: bridge

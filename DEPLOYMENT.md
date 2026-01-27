@@ -296,7 +296,7 @@ docker compose -f ops/docker/docker-compose.prod.yml build
 docker compose -f ops/docker/docker-compose.prod.yml up -d postgres backend frontend
 
 # 6. 初始化证书
-docker compose -f ops/docker/docker-compose.prod.yml run --rm certbot init-cert.sh
+docker compose -f ops/docker/docker-compose.prod.yml run --rm certbot /opt/init-cert.sh
 
 # 7. 启动 nginx 和 certbot
 docker compose -f ops/docker/docker-compose.prod.yml up -d nginx certbot
@@ -315,6 +315,12 @@ docker compose -f ops/docker/docker-compose.prod.yml build --no-cache
 
 # 3. 重启容器
 docker compose -f ops/docker/docker-compose.prod.yml up -d
+```
+
+**回滚部署：**
+```bash
+# 回滚到指定版本（git ref）
+./ops/rollback.sh <git-ref>
 ```
 
 ---
@@ -336,9 +342,9 @@ docker compose -f ops/docker/docker-compose.prod.yml up -d
 ```bash
 # 初始化证书
 docker compose -f ops/docker/docker-compose.prod.yml run --rm \
-    -e DOMAINS="szczk.com,www.szzczk.com" \
-    -e LETSENCRYPT_EMAIL="admin@szczk.com" \
-    certbot init-cert.sh
+  -e DOMAINS="szczk.com,www.szzczk.com" \
+  -e LETSENCRYPT_EMAIL="admin@szczk.com" \
+  certbot /opt/init-cert.sh
 ```
 
 ### 5.3 证书续期
@@ -358,7 +364,7 @@ echo "✅ 证书续期检查完成"
 **`ops/docker/cron.txt`：**
 ```cron
 # 每天凌晨 3 点检查证书续期
-0 3 * * * /bin/sh /usr/local/bin/certbot-renew.sh >> /var/log/certbot-renew.log 2>&1
+0 3 * * * /bin/sh /opt/certbot-renew.sh >> /var/log/certbot-renew.log 2>&1
 ```
 
 ### 5.4 Nginx SSL 配置
@@ -517,30 +523,30 @@ fi
 
 # 1. 拉取最新镜像
 echo "📥 拉取最新镜像..."
-docker compose -f docker/docker-compose.prod.yml pull
+docker compose -f ops/docker/docker-compose.prod.yml build
 
 # 2. 停止旧容器
 echo "⏹️  停止旧容器..."
-docker compose -f docker/docker-compose.prod.yml down
+docker compose -f ops/docker/docker-compose.prod.yml down
 
 # 3. 启动基础服务
 echo "🚀 启动基础服务..."
-docker compose -f docker/docker-compose.prod.yml up -d postgres backend frontend
+docker compose -f ops/docker/docker-compose.prod.yml up -d postgres backend frontend
 
 # 4. 等待服务就绪
 echo "⏳ 等待服务启动..."
 sleep 30
 
 # 5. 检查证书是否存在
-if ! docker compose -f docker/docker-compose.prod.yml exec -T nginx ls /etc/letsencrypt/live/szczk.com/fullchain.pem 2>/dev/null; then
+if ! docker compose -f ops/docker/docker-compose.prod.yml exec -T nginx ls /etc/letsencrypt/live/szczk.com/fullchain.pem 2>/dev/null; then
     echo "⚠️  证书不存在，请先运行证书初始化:"
-    echo "   docker compose -f ops/docker/docker-compose.prod.yml run --rm certbot init-cert.sh"
+  echo "   docker compose -f ops/docker/docker-compose.prod.yml run --rm certbot /opt/init-cert.sh"
     exit 1
 fi
 
 # 6. 启动 nginx 和 certbot
 echo "🌐 启动 Nginx 和 Certbot..."
-docker compose -f docker/docker-compose.prod.yml up -d nginx certbot
+docker compose -f ops/docker/docker-compose.prod.yml up -d nginx certbot
 
 # 7. 健康检查
 echo "🔍 健康检查..."
@@ -597,6 +603,10 @@ docker compose -f ops/docker/docker-compose.dev.yml up
 | Frontend | `wget --quiet --tries=1 --spider http://localhost:3000/healthz` | 30s | 10s | 3 |
 | Nginx | `wget --quiet --tries=1 --spider http://localhost/healthz` | 30s | 5s | 3 |
 
+**健康检查端点说明：**
+- 前端：`/healthz`
+- 后端：`/api/healthz`
+
 ### 7.2 日志管理
 
 **日志收集策略：**
@@ -644,6 +654,8 @@ docker compose -f ops/docker/docker-compose.prod.yml logs --tail=100
 | **业务指标** | API 错误率 | > 5% | Critical |
 | | 证书有效期 | < 7 天 | Critical |
 
+**详细阈值与说明**：参见 `ops/monitoring/metrics.md`。
+
 ---
 
 ## 8. 数据备份与恢复
@@ -668,7 +680,7 @@ docker compose -f ops/docker/docker-compose.prod.yml logs --tail=100
 set -euo pipefail
 
 BACKUP_DIR=${BACKUP_DIR:-/backups}
-MEDIA_DIR=${MEDIA_DIR:-/media}
+MEDIA_DIR=${MEDIA_DIR:-/app/public/uploads}
 POSTGRES_HOST=${POSTGRES_HOST:-postgres}
 POSTGRES_PORT=${POSTGRES_PORT:-5432}
 POSTGRES_DB=${POSTGRES_DB:-zczk}
@@ -692,10 +704,10 @@ echo "Backup complete: $DB_DUMP, $MEDIA_ARCHIVE"
 **备份定时任务 `ops/backups/cron.txt`：**
 ```cron
 # 每天凌晨 2:00 备份数据库
-0 2 * * * /bin/sh /ops/backups/backup.sh >> /var/log/backup.log 2>&1
+0 2 * * * /bin/bash /usr/local/bin/backup.sh >> /var/log/backup.log 2>&1
 
-# 每周日 2:30 清理过期备份
-30 2 * * 0 /bin/sh /ops/backups/retention.sh >> /var/log/backup.log 2>&1
+# 每天凌晨 2:30 清理过期备份（保留 7 天）
+30 2 * * * /bin/bash /usr/local/bin/retention.sh >> /var/log/retention.log 2>&1
 ```
 
 ### 8.3 恢复脚本
@@ -706,7 +718,7 @@ echo "Backup complete: $DB_DUMP, $MEDIA_ARCHIVE"
 set -euo pipefail
 
 BACKUP_DIR=${BACKUP_DIR:-/backups}
-MEDIA_DIR=${MEDIA_DIR:-/media}
+MEDIA_DIR=${MEDIA_DIR:-/app/public/uploads}
 POSTGRES_HOST=${POSTGRES_HOST:-postgres}
 POSTGRES_PORT=${POSTGRES_PORT:-5432}
 POSTGRES_DB=${POSTGRES_DB:-zczk}
