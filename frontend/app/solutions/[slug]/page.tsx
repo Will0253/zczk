@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { HighwaySolutionDetail } from '@/components/sections/HighwaySolutionDetail'
 import { getSolutionBySlug, getAllSolutionSlugs } from '@/content/solutions'
@@ -71,9 +72,9 @@ function GenericSolutionDetail({ solution }: { solution: NonNullable<ReturnType<
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <nav className="flex items-center gap-2 text-white/60 text-sm mb-8">
-            <a href="/" className="hover:text-[#fdbd00] transition-colors">首页</a>
+            <Link href="/" className="hover:text-[#fdbd00] transition-colors">首页</Link>
             <span className="text-white/30">›</span>
-            <a href="/solutions" className="hover:text-[#fdbd00] transition-colors">解决方案</a>
+            <Link href="/solutions" className="hover:text-[#fdbd00] transition-colors">解决方案</Link>
             <span className="text-white/30">›</span>
             <span className="text-[#fdbd00]">{solution.shortTitle}</span>
           </nav>
@@ -148,12 +149,12 @@ function GenericSolutionDetail({ solution }: { solution: NonNullable<ReturnType<
                 我们的专家团队随时为您提供详细的解决方案咨询和现场演示。
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="/contact" className="px-10 py-5 bg-[#fdbd00] text-[#11345b] font-black rounded-[32px] shadow-2xl hover:scale-105 transition-all">
+                <Link href="/contact" className="px-10 py-5 bg-[#fdbd00] text-[#11345b] font-black rounded-[32px] shadow-2xl hover:scale-105 transition-all">
                   预约专家咨询
-                </a>
-                <a href="/solutions" className="px-10 py-5 bg-white/10 text-white font-black rounded-[32px] border border-white/20 hover:bg-white/20 transition-all">
+                </Link>
+                <Link href="/solutions" className="px-10 py-5 bg-white/10 text-white font-black rounded-[32px] border border-white/20 hover:bg-white/20 transition-all">
                   返回解决方案
-                </a>
+                </Link>
               </div>
             </div>
             

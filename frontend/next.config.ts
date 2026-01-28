@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   // 图片优化配置
   images: {
     // 远程域名白名单
@@ -22,6 +23,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'http',
         hostname: '192.168.0.2',
+        port: '1337',
+      },
+      {
+        protocol: 'http',
+        hostname: 'backend',
         port: '1337',
       },
     ],

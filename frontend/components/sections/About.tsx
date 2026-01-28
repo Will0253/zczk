@@ -13,10 +13,10 @@ const stats = [
 ]
 
 const milestones = [
-  { year: '2015', title: '公司成立', desc: '中创智控于深圳成立，确立"智慧交通"发展战略。' },
+  { year: '2015', title: '公司成立', desc: '中创智控于深圳成立，确立“智慧交通”发展战略。' },
   { year: '2017', title: '技术突破', desc: '发布首款AI边缘计算终端，实现施工现场实时预警。' },
   { year: '2020', title: '行业领先', desc: '多维融合感知技术成熟，市场份额跻身国内前三。' },
-  { year: '2023', title: '全面升级', desc: '启动"云边端"一体化平台，定义智慧路段新标准。' },
+  { year: '2023', title: '全面升级', desc: '启动“云边端”一体化平台，定义智慧路段新标准。' },
 ]
 
 const bentoAdvantages = [
@@ -126,7 +126,7 @@ export function About() {
                   </span>
                 </h1>
                 <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl mb-12">
-                  以感知技术为核心，以AI算法为纽带，打造"看得见、管得住、预得准"的智慧交通生态。
+                  以感知技术为核心，以AI算法为纽带，打造“看得见、管得住、预得准”的智慧交通生态。
                 </p>
                 
                 <div className="flex flex-wrap gap-8 items-center">
@@ -301,10 +301,10 @@ export function About() {
               <h2 className="text-4xl lg:text-7xl text-[#11345b] font-bold mb-10 leading-[1.1] tracking-tighter">深耕场景<br /><span className="text-[#fdbd00]">筑牢生命防线</span></h2>
               <div className="space-y-8 text-gray-600 text-lg leading-relaxed">
                 <p>
-                  成立于2015年的中创智控，始终坚持"技术至简，安全至上"的研发哲学。我们不仅提供硬件，更是在构建一套能够自我学习、自我进化的交通安全大脑。
+                  成立于2015年的中创智控，始终坚持“技术至简，安全至上”的研发哲学。我们不仅提供硬件，更是在构建一套能够自我学习、自我进化的交通安全大脑。
                 </p>
                 <p>
-                  从最初的单一感应器，到如今覆盖高速、隧道、桥梁的"全息路段"解决方案，中创智控已为全球数千个项目提供了可靠的安全守护。我们的每一行代码，都在为生命争取宝贵的响应时间。
+                  从最初的单一感应器，到如今覆盖高速、隧道、桥梁的“全息路段”解决方案，中创智控已为全球数千个项目提供了可靠的安全守护。我们的每一行代码，都在为生命争取宝贵的响应时间。
                 </p>
                 <div className="grid grid-cols-2 gap-10 pt-10 border-t border-gray-100">
                   <div>

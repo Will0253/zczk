@@ -1,14 +1,35 @@
-FROM node:24-alpine
-
+FROM node:24-slim AS base
 WORKDIR /app
 
+FROM base AS deps
 COPY backend/package*.json ./
-RUN npm ci
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends python3 make g++ \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& npm ci --no-audit --no-fund
 
+FROM deps AS build
 COPY backend/ ./
 RUN npm run build
 
+FROM base AS runner
 ENV NODE_ENV=production
+COPY backend/package*.json ./
+RUN npm ci --omit=dev --no-audit --no-fund \
+	&& npm cache clean --force
+RUN groupadd --system nodejs \
+	&& useradd --system --gid nodejs --home /app --shell /usr/sbin/nologin nodejs
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/dist/config ./config
+COPY --from=build /app/dist/src ./src
+COPY --from=build /app/public ./public
+RUN chown -R nodejs:nodejs /app
+USER nodejs
 EXPOSE 1337
-
 CMD ["npm", "run", "start"]
+
+FROM deps AS dev
+ENV NODE_ENV=development
+COPY backend/ ./
+EXPOSE 1337
+CMD ["npm", "run", "develop"]

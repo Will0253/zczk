@@ -1,14 +1,29 @@
-FROM node:24-alpine
-
+FROM node:24-alpine AS base
 WORKDIR /app
 
+FROM base AS deps
 COPY frontend/package.json frontend/pnpm-lock.yaml* ./
 RUN corepack enable && pnpm install --frozen-lockfile
 
+FROM deps AS build
+ENV NEXT_TELEMETRY_DISABLED=1
 COPY frontend/ ./
 RUN pnpm build
 
+FROM base AS runner
 ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+COPY --from=build /app/.next/standalone ./
+COPY --from=build /app/.next/static ./.next/static
+COPY --from=build /app/public ./public
+RUN addgroup -S nodejs && adduser -S nodejs -G nodejs \
+	&& chown -R nodejs:nodejs /app
+USER nodejs
 EXPOSE 3000
+CMD ["node", "server.js"]
 
-CMD ["pnpm", "start"]
+FROM deps AS dev
+ENV NODE_ENV=development
+COPY frontend/ ./
+EXPOSE 3000
+CMD ["pnpm", "dev", "--turbopack"]

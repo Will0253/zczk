@@ -28,6 +28,7 @@ services:
     build:
       context: ../..
       dockerfile: ops/docker/Dockerfile.backend
+      target: runner
     env_file:
       - ../.env.prod
     depends_on:
@@ -52,6 +53,7 @@ services:
     build:
       context: ../..
       dockerfile: ops/docker/Dockerfile.frontend
+      target: runner
     env_file:
       - ../.env.prod
     depends_on:

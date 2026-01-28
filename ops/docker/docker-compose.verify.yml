@@ -2,30 +2,28 @@ version: "3.9"
 
 services:
   backend:
-    build:
-      context: ../..
-      dockerfile: ops/docker/Dockerfile.backend
-      target: dev
+    image: docker-backend:latest
+    pull_policy: never
     env_file:
       - ../.env.dev.example
-    command: ["npm", "run", "develop"]
+    environment:
+      - NODE_ENV=production
+      - DATABASE_FILENAME=/app/.tmp/data.db
     ports:
       - "1337:1337"
     volumes:
-      - backend-tmp:/app/.tmp
+      - strapi-uploads:/app/public/uploads
     networks:
       - zczk-network
 
   frontend:
-    build:
-      context: ../..
-      dockerfile: ops/docker/Dockerfile.frontend
-      target: dev
+    image: docker-frontend:latest
+    pull_policy: never
     env_file:
       - ../.env.dev.example
     environment:
+      - NODE_ENV=production
       - NEXT_PUBLIC_STRAPI_URL=http://backend:1337
-    command: ["pnpm", "dev", "--turbopack"]
     ports:
       - "3000:3000"
     depends_on:
@@ -34,7 +32,7 @@ services:
       - zczk-network
 
 volumes:
-  backend-tmp:
+  strapi-uploads:
 
 networks:
   zczk-network:

@@ -175,7 +175,7 @@ export function Contact() {
                       </div>
                       <div>
                         <h4 className="text-xl font-bold text-[#11345b] mb-2">公共交通</h4>
-                        <p className="text-sm text-gray-500 leading-relaxed">地铁4号线"科技园站"B出口，向东步行500米即到。</p>
+                        <p className="text-sm text-gray-500 leading-relaxed">地铁4号线“科技园站”B出口，向东步行500米即到。</p>
                       </div>
                     </div>
                     <div className="flex gap-6">
@@ -184,7 +184,7 @@ export function Contact() {
                       </div>
                       <div>
                         <h4 className="text-xl font-bold text-[#11345b] mb-2">自驾导航</h4>
-                        <p className="text-sm text-gray-500 leading-relaxed">导航搜索"中创智控科技园"，园区内设有访客专用停车位。</p>
+                        <p className="text-sm text-gray-500 leading-relaxed">导航搜索“中创智控科技园”，园区内设有访客专用停车位。</p>
                       </div>
                     </div>
                   </div>
