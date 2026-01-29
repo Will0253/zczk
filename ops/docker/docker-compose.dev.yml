@@ -7,12 +7,18 @@ services:
       dockerfile: ops/docker/Dockerfile.backend
       target: dev
     env_file:
-      - ../.env.dev.example
+      - ../.env.dev
     command: ["npm", "run", "develop"]
     ports:
       - "1337:1337"
     volumes:
+      - ../../backend:/app
+      - /app/node_modules
       - backend-tmp:/app/.tmp
+    environment:
+      - WATCHPACK_POLLING=true
+    stdin_open: true
+    tty: true
     networks:
       - zczk-network
 
@@ -22,14 +28,21 @@ services:
       dockerfile: ops/docker/Dockerfile.frontend
       target: dev
     env_file:
-      - ../.env.dev.example
+      - ../.env.dev
     environment:
       - NEXT_PUBLIC_STRAPI_URL=http://backend:1337
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
     command: ["pnpm", "dev", "--turbopack"]
     ports:
       - "3000:3000"
+    volumes:
+      - ../../frontend:/app
+      - /app/node_modules
     depends_on:
       - backend
+    stdin_open: true
+    tty: true
     networks:
       - zczk-network
 
