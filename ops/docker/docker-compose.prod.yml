@@ -4,14 +4,9 @@ services:
   postgres:
     image: postgres:16-alpine
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 1G
-        reservations:
-          cpus: '0.5'
-          memory: 512M
+    mem_limit: 1g
+    mem_reservation: 512m
+    cpus: '1.0'
     env_file:
       - ../.env.prod
     environment:
@@ -36,14 +31,9 @@ services:
 
   backend:
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 1G
-        reservations:
-          cpus: '0.5'
-          memory: 512M
+    mem_limit: 1g
+    mem_reservation: 512m
+    cpus: '1.0'
     build:
       context: ../..
       dockerfile: ops/docker/Dockerfile.backend
@@ -56,7 +46,7 @@ services:
     volumes:
       - strapi-uploads:/app/public/uploads
     healthcheck:
-      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:1337/api/healthz"]
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:1337/api/healthz', (r) => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))\""]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -71,25 +61,22 @@ services:
 
   frontend:
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
-        reservations:
-          cpus: '0.25'
-          memory: 256M
+    mem_limit: 512m
+    mem_reservation: 256m
+    cpus: '0.5'
     build:
       context: ../..
       dockerfile: ops/docker/Dockerfile.frontend
       target: runner
+      args:
+        NEXT_PUBLIC_STRAPI_URL: ${NEXT_PUBLIC_STRAPI_URL}
     env_file:
       - ../.env.prod
     depends_on:
       backend:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:3000/healthz"]
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:3000/healthz', (r) => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))\""]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -104,14 +91,9 @@ services:
 
   nginx:
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 256M
-        reservations:
-          cpus: '0.25'
-          memory: 128M
+    mem_limit: 256m
+    mem_reservation: 128m
+    cpus: '0.5'
     image: nginx:1.27-alpine
     depends_on:
       frontend:

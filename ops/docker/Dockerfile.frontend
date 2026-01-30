@@ -11,7 +11,9 @@ RUN corepack enable pnpm && \
     pnpm install --frozen-lockfile --prefer-offline
 
 FROM deps AS build
+ARG NEXT_PUBLIC_STRAPI_URL=
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_PUBLIC_STRAPI_URL=${NEXT_PUBLIC_STRAPI_URL}
 COPY frontend/ ./
 RUN pnpm build
 
