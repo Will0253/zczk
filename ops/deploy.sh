@@ -15,46 +15,85 @@ cd "$ROOT_DIR"
 
 echo "🚀 开始部署生产环境..."
 
+DOMAIN=$(grep "DOMAINS=" "$ENV_FILE" | cut -d'=' -f2 | cut -d',' -f1)
+
+wait_for_health() {
+  local service="$1"
+  local timeout_seconds="${2:-180}"
+  local start
+  start=$(date +%s)
+  echo "⏳ 等待 $service 健康检查就绪（最长 ${timeout_seconds}s）..."
+  while true; do
+    local status
+    local container_id
+    container_id=$(docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" ps -q "$service" 2>/dev/null || true)
+    status=$(docker inspect --format '{{.State.Health.Status}}' "$container_id" 2>/dev/null || true)
+    if [ "$status" = "healthy" ]; then
+      echo "✅ $service 已 healthy"
+      return 0
+    fi
+
+    local now
+    now=$(date +%s)
+    if [ $((now - start)) -ge "$timeout_seconds" ]; then
+      echo "❌ 等待 $service healthy 超时"
+      docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" ps
+      docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" logs --tail=200 "$service" || true
+      return 1
+    fi
+    sleep 3
+  done
+}
+
+curl_check() {
+  local url="$1"
+  curl -fsS --connect-timeout 3 --max-time 10 \
+    --retry 30 --retry-connrefused --retry-delay 2 \
+    "$url" > /dev/null
+}
+
 echo "📦 构建镜像..."
-docker compose -f "$COMPOSE_FILE" build
+docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" build
 
 echo "⏹️  停止旧容器..."
-docker compose -f "$COMPOSE_FILE" down
+docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" down
 
 echo "🚀 启动基础服务..."
-docker compose -f "$COMPOSE_FILE" up -d postgres backend frontend
+docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" up -d postgres backend frontend
 
-echo "⏳ 等待服务启动..."
-sleep 30
+wait_for_health postgres 180
+wait_for_health backend 240
+wait_for_health frontend 240
 
-if ! docker compose -f "$COMPOSE_FILE" exec -T nginx ls /etc/letsencrypt/live/szczk.com/fullchain.pem 2>/dev/null; then
+if ! docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" run --rm --entrypoint /bin/sh certbot -c "test -f /etc/letsencrypt/live/$DOMAIN/fullchain.pem" 2>/dev/null; then
   echo "⚠️  证书不存在，请先初始化证书:"
-  echo "   docker compose -f ops/docker/docker-compose.prod.yml run --rm certbot /opt/init-cert.sh"
+  echo "   docker compose --env-file ops/.env.prod -f ops/docker/docker-compose.prod.yml run --rm --service-ports certbot /opt/init-cert.sh"
   exit 1
 fi
 
-echo "🌐 启动 Nginx 与 Certbot..."
-docker compose -f "$COMPOSE_FILE" up -d nginx certbot
+echo "🌐 启动 Nginx..."
+docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" up -d nginx
 
 echo "🔍 健康检查..."
-sleep 10
 
-DOMAIN=$(grep "DOMAINS=" "$ENV_FILE" | cut -d'=' -f2 | cut -d',' -f1)
+wait_for_health nginx 180
 
-if curl -f "https://$DOMAIN/healthz" > /dev/null 2>&1; then
+if curl_check "https://$DOMAIN/healthz"; then
   echo "✅ 前端健康检查通过"
 else
   echo "❌ 前端健康检查失败"
+  docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" logs --tail=200 nginx frontend || true
   exit 1
 fi
 
-if curl -f "https://$DOMAIN/api/healthz" > /dev/null 2>&1; then
+if curl_check "https://$DOMAIN/api/healthz"; then
   echo "✅ 后端健康检查通过"
 else
   echo "❌ 后端健康检查失败"
+  docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" logs --tail=200 nginx backend || true
   exit 1
 fi
 
 echo "✅ 部署完成！"
 echo "🌐 访问地址: https://$DOMAIN"
-docker compose -f "$COMPOSE_FILE" ps
+docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" ps

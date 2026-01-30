@@ -27,4 +27,7 @@ fi
 
 certbot certonly --standalone --non-interactive --agree-tos \
   --email "$LETSENCRYPT_EMAIL" \
+  --http-01-address 0.0.0.0 \
+  --http-01-port 80 \
+  --keep-until-expiring \
   $DOMAINS_ARGS

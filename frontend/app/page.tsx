@@ -10,6 +10,8 @@ import { siteConfig } from '@/content/site-config'
 import { buildNewsCategories } from '@/lib/categories'
 import { getFeaturedNews, getFeaturedProducts } from '@/lib/strapi'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: siteConfig.seo.defaultTitle,
   description: siteConfig.seo.defaultDescription,

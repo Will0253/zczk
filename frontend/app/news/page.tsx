@@ -3,9 +3,18 @@ import { News } from '@/components/sections/News'
 import { siteConfig } from '@/content/site-config'
 import { buildNewsCategories } from '@/lib/categories'
 import { getFeaturedNews, getNewsList } from '@/lib/strapi'
+import type { NewsArticle } from '@/types/news'
+
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const news = await getNewsList()
+  let news: NewsArticle[] = []
+  try {
+    news = await getNewsList()
+  } catch {
+    news = []
+  }
+
   const hero = news[0]
   const description = hero?.summary || '聚焦行业前沿动态，发布最新企业资讯，解读智慧交通发展趋势。'
   const image = hero?.image || siteConfig.seo.ogImage

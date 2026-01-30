@@ -1,2 +1,2 @@
-# 每天凌晨 3 点检查证书续期
-0 3 * * * /bin/sh /opt/certbot-renew.sh >> /var/log/certbot-renew.log 2>&1
+# 宿主机 Cron 示例：每天凌晨 3 点检查证书续期，并 reload Nginx（将 /path/to/zczk 替换为实际路径）
+0 3 * * * cd /path/to/zczk && docker compose --env-file ops/.env.prod -f ops/docker/docker-compose.prod.yml run --rm certbot /opt/certbot-renew.sh >> /var/log/certbot-renew.log 2>&1 && docker compose --env-file ops/.env.prod -f ops/docker/docker-compose.prod.yml exec -T nginx nginx -s reload >> /var/log/certbot-renew.log 2>&1

@@ -3,7 +3,10 @@ import { notFound } from 'next/navigation'
 import { NewsDetail } from '@/components/sections/NewsDetail'
 import { siteConfig } from '@/content/site-config'
 import { buildNewsCategories } from '@/lib/categories'
-import { getAllNewsSlugs, getNewsBySlug, getNewsList } from '@/lib/strapi'
+import { getNewsBySlug, getNewsList } from '@/lib/strapi'
+
+export const dynamic = 'force-dynamic'
+
 
 interface NewsDetailPageProps {
   params: Promise<{
@@ -11,18 +14,15 @@ interface NewsDetailPageProps {
   }>
 }
 
-// 生成静态路由参数
-export async function generateStaticParams() {
-  const slugs = await getAllNewsSlugs()
-  return slugs.map((slug) => ({
-    slug,
-  }))
-}
-
 // 生成动态元数据
 export async function generateMetadata({ params }: NewsDetailPageProps): Promise<Metadata> {
   const { slug } = await params
-  const article = await getNewsBySlug(slug)
+  let article = null
+  try {
+    article = await getNewsBySlug(slug)
+  } catch {
+    article = null
+  }
   
   if (!article) {
     return {

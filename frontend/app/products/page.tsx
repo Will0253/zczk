@@ -3,9 +3,18 @@ import { Products } from '@/components/sections/Products'
 import { siteConfig } from '@/content/site-config'
 import { buildProductCategories } from '@/lib/categories'
 import { getProducts } from '@/lib/strapi'
+import type { Product } from '@/types/product'
+
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const products = await getProducts()
+  let products: Product[] = []
+  try {
+    products = await getProducts()
+  } catch {
+    products = []
+  }
+
   const hero = products[0]
   const description = hero?.description || siteConfig.seo.defaultDescription
   const image = hero?.image || siteConfig.seo.ogImage
