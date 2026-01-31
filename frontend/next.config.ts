@@ -1,5 +1,28 @@
 import type { NextConfig } from 'next'
 
+function getStrapiRemotePattern():
+  | {
+      protocol: 'http' | 'https'
+      hostname: string
+      port?: string
+    }
+  | undefined {
+  const raw = process.env.NEXT_PUBLIC_STRAPI_URL
+  if (!raw) return undefined
+  try {
+    const url = new URL(raw)
+    const protocol = url.protocol.replace(':', '')
+    if (protocol !== 'http' && protocol !== 'https') return undefined
+    return {
+      protocol,
+      hostname: url.hostname,
+      port: url.port || undefined,
+    }
+  } catch {
+    return undefined
+  }
+}
+
 const nextConfig: NextConfig = {
   output: 'standalone',
   // 图片优化配置
@@ -10,6 +33,9 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      // 生产环境通过 Nginx 反代后，图片通常走同域名 /uploads/*。
+      // Next Image Optimizer 需要显式允许该域名，否则会返回："url parameter is not allowed"。
+      ...(getStrapiRemotePattern() ? [getStrapiRemotePattern()!] : []),
       {
         protocol: 'http',
         hostname: 'localhost',
